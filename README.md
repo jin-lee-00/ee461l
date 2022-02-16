@@ -12,6 +12,7 @@ Jin Lee, Brandi Nguyen, Allen Zhou, Carson Bone, Noah Zamarripa
 
 
 ### R1-2 Features
+The project board for work items can be found [here](https://github.com/jin-lee-00/ee461l/projects/2)
 #### User Stories
 
 #### Technical Debt
