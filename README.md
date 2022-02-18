@@ -29,36 +29,10 @@ Our team is using Github for task management (issue tracker, project boards), Zo
 Our team will use the AGILE methodology to efficiently distribute tasks, minimize technical debt, and quickly develop working prototypes to present to our stakeholders.
 
 ### R1-2 Features
-The project board for work items in this section can be found [here.](https://github.com/jin-lee-00/ee461l/projects/2)
+
 #### User Stories  
-User stories in this phase are derived from the minimum features required for each subsystem, and are organized to reflect such. These user stories serve as a starting point to identify tasks and will be refined throughout system development.
-
-##### User management 
-<ul>
-	<li> As a user, I want to enter my user ID and password to sign-in to the app. </li>  
-	<li> As a user, I want to easily enter my user ID and password to create a new account. </li>  
-	<li> As a user, I want to easily enter information to create a new project. </li>   
-	<li> As a user, I want to login to existing projects. </li>    
-	<li> As a user, I want to save my user and project information. </li>    
-	<li> As a user, I want to easily access saved information. </li>    
-	<li> As a user, I want my user ID and password encrypted for security. </li>   
-</ul>
-
-##### Resource Management  
-<ul>
-	<li> As a user, I want to easily view the capacity of HWSet 1 and HWSet 2. </li>  
-	<li> As a user, I want to easily view the availability of HWSet 1 and HWSet 2. </li>  
-	<li> As a user, I want to store (return) and access (retrieve) all available HW. </li>  
-	<li> As a user, I want to enter how many units of HWSet1 and HWSet 2 to checkout and check-in. </li>
-
-</ul>
-
-##### Data Access  
-<ul>
-	<li> As a user, I want to easily view the available public datasets for use. </li>  
-	<li> As a user, I want to be able to download any of the public datasets as a zip file. </li>	
-</ul>
-
+User stories in this phase are derived from the minimum features required for each subsystem, and are organized to reflect such. These user stories serve as a starting point to identify tasks and will be refined throughout system development.  
+The project board for user stories can be found [here.](https://github.com/jin-lee-00/ee461l/projects/3)
 
 #### Technical Debt  
 There is no technical debt as of phase 1, but work to minimize them throughout development. 
