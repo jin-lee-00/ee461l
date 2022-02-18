@@ -56,7 +56,7 @@ Our team will need to research the various tools used in implementation listed i
 ![sign in](https://user-images.githubusercontent.com/98115244/154193583-5c3fe476-6739-4b32-8b91-3400480ea253.png)
 
 ### R1-4: Tools and Approach
-**Backend:** Python -Flask for framework
+**Backend:** Python -Flask for framework  
 **Frontend:** React.js  
 **Database:** MongoDB  
 **Testing:** PyTest  
