@@ -64,7 +64,7 @@ These tasks are further broken down into work items
 
 
 ### R1-4: Tools and Approach
-**Backend:** Flask framework
+**Backend:** Flask framework  
 **Frontend:** React.js  
 **Database:** MongoDB  
 **Testing:** PyTest  
