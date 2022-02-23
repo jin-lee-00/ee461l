@@ -32,18 +32,20 @@ Our team will use the AGILE methodology to efficiently distribute tasks, minimiz
 
 #### User Stories  
 User stories in this phase are derived from the minimum features required for each subsystem, and are organized to reflect such. These user stories serve as a starting point to identify tasks and will be refined throughout system development.  
-The project board for user stories can be found [here.](https://github.com/jin-lee-00/ee461l/projects/3)
+The **revised** work items for Checkpoint 1 can be found [here](https://github.com/jin-lee-00/ee461l/issues)
 
 #### Technical Debt  
 There is no technical debt as of phase 1, but work to minimize them throughout development. 
 #### Research Items
 Our team will need to research the various tools used in implementation listed in R1-4.
-<ul>
+<ul>  
+	<li> Research flask </li>  
 	<li> Research React.js </li>
 	<li> Research MongoDB </li>
 	<li> Research PyTest </li>
 	<li> Research Heruko Cloud Deploy </li>
-</ul>
+</ul>  
+These tasks are further broken down into work items
 
 ### R1-3 High-level Sketch
 #### Home Page
@@ -53,10 +55,16 @@ Our team will need to research the various tools used in implementation listed i
 #### Sign-up
 ![sign up](https://user-images.githubusercontent.com/98115244/154193573-b22b5ade-0e2a-4925-9035-e2b4660d4e50.png)
 #### Sign-in 
-![sign in](https://user-images.githubusercontent.com/98115244/154193583-5c3fe476-6739-4b32-8b91-3400480ea253.png)
+![sign in](https://user-images.githubusercontent.com/98115244/154193583-5c3fe476-6739-4b32-8b91-3400480ea253.png)  
+#### Data Access GUI  
+![data access](https://user-images.githubusercontent.com/98115244/155260562-47d4a450-97ae-46fe-bca1-4a69724d601e.png)  
+#### Resource Management GUI  
+![resourse management](https://user-images.githubusercontent.com/98115244/155260578-718371e4-2674-48ae-8d10-9ad0291c24e0.png)
+
+
 
 ### R1-4: Tools and Approach
-**Backend:** Python -Flask for framework  
+**Backend:** Flask framework
 **Frontend:** React.js  
 **Database:** MongoDB  
 **Testing:** PyTest  
