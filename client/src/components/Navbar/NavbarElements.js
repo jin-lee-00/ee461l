@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { NavLink as Link } from 'react-router-dom'
+import { NavLink as LinkRoute } from 'react-router-dom'
+import {Link as LinkScroll} from 'react-scroll'
 import {FaBars} from 'react-icons/fa'
 
 export const Nav = styled.nav`
@@ -11,7 +12,7 @@ export const Nav = styled.nav`
   z-index: 10;
 `;
 
-export const NavLink = styled(Link)`
+export const NavLink = styled(LinkScroll)`
   color: #fff;
   display: flex;
   align-items: center;
@@ -63,8 +64,8 @@ export const NavBtn = styled.nav`
   }
 `;
 
-export const NavBtnLink = styled(Link)`
-  border-radius: 4px;
+export const NavBtnLink = styled(LinkRoute)`
+  border-radius: 50px;
   background: #bf5700;
   padding: 10px 22px;
   color: #fff;

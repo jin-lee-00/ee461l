@@ -1,25 +1,25 @@
 import React from 'react'
 import {Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink} from './NavbarElements'
 
-const Navbar = () => {
+const Navbar = ({ toggle }) => {
   return (
     <>
       <Nav>
-        <NavLink to='/'>
+        <NavLink to='home'>
           <h1>HaaS</h1>
         </NavLink>
-        <Bars />
+        <Bars onClick={toggle}/>
         <NavMenu>
-          <NavLink to="/projects" activeStyle>
+          <NavLink to="projects" activeStyle>
             Projects
           </NavLink>
-          <NavLink to="/resources" activeStyle>
+          <NavLink to="resources" activeStyle>
             Resources
           </NavLink>
-          <NavLink to="/datasets" activeStyle>
+          <NavLink to="datasets" activeStyle>
             Datasets
           </NavLink>
-          <NavLink to="/about" activeStyle>
+          <NavLink to="about" activeStyle>
             About
           </NavLink>
         </NavMenu>
