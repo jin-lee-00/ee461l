@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Datasets = () => {
+const DatasetsPage = () => {
   return (
     <div 
       style={{
@@ -15,4 +15,4 @@ const Datasets = () => {
   )
 }
 
-export default Datasets
+export default DatasetsPage

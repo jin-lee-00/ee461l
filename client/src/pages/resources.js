@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Resources = () => {
+const ResourcesPage = () => {
   return (
     <div 
       style={{
@@ -15,4 +15,4 @@ const Resources = () => {
   )
 }
 
-export default Resources
+export default ResourcesPage

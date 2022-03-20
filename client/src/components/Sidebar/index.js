@@ -8,7 +8,7 @@ import {
   SidebarLink, 
   SideBtnWrap, 
   SideBtnLink
-} from './SidebarElements';
+} from './Sidebar.style';
 
 const Sidebar = ({isOpen, toggle}) => {
   return (
@@ -30,7 +30,7 @@ const Sidebar = ({isOpen, toggle}) => {
           <SidebarLink to='datasets' onClick={toggle}>
             Datasets
           </SidebarLink>
-          <SidebarLink to='about' onClick={toggle}>
+          <SidebarLink to='about' onClick={toggle} offset={-80}>
             About
           </SidebarLink>
         </SidebarMenu>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Projects = () => {
+const ProjectsPage = () => {
   return (
     <div 
       style={{
@@ -15,4 +15,4 @@ const Projects = () => {
   )
 }
 
-export default Projects
+export default ProjectsPage

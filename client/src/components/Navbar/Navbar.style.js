@@ -4,11 +4,13 @@ import {Link as LinkScroll} from 'react-scroll'
 import {FaBars} from 'react-icons/fa'
 
 export const Nav = styled.nav`
-  background: #333f48;
+  background: ${({scrollNav}) => (scrollNav ? '#333f48' : '#333f48')};
   height: 80px;
   display: flex;
   justify-content: flex-start;
   padding: 0.5rem calc((100vw - 1000px) / 2);
+  position: sticky;
+  top: 0;
   z-index: 10;
 `;
 
