@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
+import Entries from "./Entries";
 import {
   GUIContainer,
+  Header,
   TextWrapper,
   TopLine,
   Heading,
@@ -10,10 +12,36 @@ import {
   GUIButton
 } from './GUI.style';
 
-const GUI = ({ sectionName }) => {
+const GUI = ({ sectionName, unit }) => {
+  const [entries, setEntries] = useState([
+    { 
+      id: 1,
+      text: 'entry 1'
+    },
+    {
+      id: 2,
+      text: 'entry 2'
+    },
+    {
+      id: 3,
+      text: 'entry 3'
+    },
+  ])
+
+  const onClick =() => {
+    alert(unit)
+  }
   return (
     <GUIContainer primary='true'>
-      <h1>{sectionName}</h1>
+      <Header>
+        <TopLine>{sectionName}</TopLine>
+        <GUIButton 
+          onClick={onClick}
+        >
+          +
+        </GUIButton>
+      </Header>
+      <Entries entries={entries}></Entries>
     </GUIContainer>
   )
 }

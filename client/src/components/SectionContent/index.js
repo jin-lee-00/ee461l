@@ -20,6 +20,7 @@ import
 const SectionContent = ({
   lightBg, 
   id, 
+  unit,
   imgStart, 
   topLine, 
   lightText,
@@ -56,7 +57,10 @@ const SectionContent = ({
             </Column1>
             <Column2>
               <ImgWrap>
-                <GUI sectionName={id}></GUI>
+                <GUI 
+                  sectionName={id}
+                  unit={unit}
+                />
               </ImgWrap>
              </Column2>
           </ContentRow>

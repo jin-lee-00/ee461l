@@ -1,5 +1,6 @@
 export const homeObjOne = {
   id: 'projects',
+  unit: 'project',
   lightBg: false,
   lightText: true,
   lightTextDesc: true,
@@ -18,6 +19,7 @@ export const homeObjOne = {
 
 export const homeObjTwo = {
   id: 'resources',
+  unit: 'resource',
   lightBg: true,
   lightText: false,
   lightTextDesc: false,
@@ -36,6 +38,7 @@ export const homeObjTwo = {
 
 export const homeObjThree = {
   id: 'datasets',
+  unit: 'dataset',
   lightBg: false,
   lightText: true,
   lightTextDesc: true,

@@ -4,8 +4,8 @@ export const GUIContainer = styled.div`
   width: 500px;
   height: 275px; 
   background-color: ${({primary}) => (primary ? '#9cadb7' : '#333f48')};
-  margin: 0 0 0px 0;
-  padding-right: 0;
+  margin: 10px;
+  padding: 10px;
   border-radius: 10px;
   justify-content: center;
 
@@ -13,6 +13,12 @@ export const GUIContainer = styled.div`
     transform: scale(1.02);
     transition: all 0.2s ease-in-out;
   }
+`
+export const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 `
 
 export const ContentRow = styled.div`
@@ -41,8 +47,9 @@ export const TextWrapper = styled.div`
   margin: auto;
   text-align: center;
   max-width: 540px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: center;
 `
 
 export const TopLine = styled.p`
@@ -52,7 +59,7 @@ export const TopLine = styled.p`
   font-weight: 700;
   letter-spacing: 1.4px;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin-bottom: 0px;
 `
 
 export const Heading = styled.h1`
@@ -71,7 +78,7 @@ export const GUIButton = styled.button`
   border-radius: 50px;
   background: ${({primary}) => (primary ? '#333f48' : '#bf5700')};
   white-space: nowrap;
-  padding: ${({big}) => (big ? '14px 48px' : '12px 30px')};
+  padding: ${({big}) => (big ? '14px 48px' : '5px 20px')};
   color: ${({dark}) => (dark ? '#000000' : '#ffffff')};
   font-size: ${({fontBig}) => (fontBig ? '20px' : '16px')};
   outline: none;
@@ -86,4 +93,20 @@ export const GUIButton = styled.button`
     background: ${({primary}) => (primary ? '#bf5700' : '#ffffff')};
     color: #010606;
   }
+`
+export const EntryWrapper = styled.div`
+  background: #f4f4f4;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  &:hover {
+    transition: all 0.2 ease-in-out;
+    transform: scale(1.02);
+  }
+`
+
+export const EntryText = styled.h3`
+  color: #000000;
 `
