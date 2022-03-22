@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { findAllInRenderedTree } from "react-dom/test-utils";
 import Entries from "./Entries";
 import {
   GUIContainer,
@@ -11,37 +12,48 @@ import {
   Column2,
   GUIButton
 } from './GUI.style';
+import AddEntry from "./AddEntry";
 
 const GUI = ({ sectionName, unit }) => {
-  const [entries, setEntries] = useState([
-    { 
-      id: 1,
-      text: 'entry 1'
-    },
-    {
-      id: 2,
-      text: 'entry 2'
-    },
-    {
-      id: 3,
-      text: 'entry 3'
-    },
-  ])
+  const [showAddEntry, setShowAddEntry] = useState(false)
+  const [entries, setEntries] = useState([])
 
   const onClick =() => {
-    alert(unit)
+    setShowAddEntry(!showAddEntry)
   }
+
+  const manageEntry = (name) => {
+    alert("manage entry " + name)
+  }
+
+  const deleteEntry = (id) => {
+    setEntries(entries.filter((task) => task.id !== id))
+  }
+
+
+  const addEntry =(entry) => {
+    const id = Math.floor(Math.random() * 10000) + 1
+    const newEntry = { id, ...entry}
+    setEntries([...entries, newEntry])
+  }
+
   return (
     <GUIContainer primary='true'>
       <Header>
+        
         <TopLine>{sectionName}</TopLine>
         <GUIButton 
           onClick={onClick}
+          primary={showAddEntry}
         >
-          +
+          {showAddEntry ? '-' : '+'}
         </GUIButton>
       </Header>
-      <Entries entries={entries}></Entries>
+      {showAddEntry && <AddEntry onAdd={addEntry}/>}
+      {entries.length > 0 ? <Entries entries={entries} 
+        onManage={manageEntry}
+        onDelete={deleteEntry}
+      /> : 'No Entries'}
     </GUIContainer>
   )
 }
