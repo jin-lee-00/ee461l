@@ -48,7 +48,10 @@ const SectionContent = ({
                 
                 
                 <BtnWrap>
-                  <BtnLink to={route}>
+                  <BtnLink to={route}
+                    primary={primary}
+                    lightBg={lightBg}
+                  >
                     {buttonLabel}
                   </BtnLink>
                 </BtnWrap>

@@ -42,7 +42,7 @@ export const BtnLink = styled(LinkRoute)`
 
   &:hover {
     transition: all 0.2 ease-in-out;
-    background: ${({primary}) => (primary ? '#bf5700' : '#ffffff')};
-    color: #010606;
+    background: ${({primary, lightBg}) => (primary ? '#bf5700' : (lightBg ? '#333f48' : '#ffffff'))};
+    color: ${({primary, lightBg}) => (primary ? '#ffffff' : (lightBg ? '#ffffff' : '#000000'))};
   }
 `
