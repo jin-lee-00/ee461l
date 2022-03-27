@@ -24,7 +24,7 @@ const SectionHaaS = () => {
       <HaasContent>
         <HaasH1>EE 461L Group 2</HaasH1>
         <HaasP>
-          Jin Lee
+        Jin Lee, Brandi Nguyen, Allen Zhou, Carson Bone, Noah Zamarripa  
         </HaasP>
         <HaasBtnWrapper>
           <BtnLink 
