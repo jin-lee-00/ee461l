@@ -28,7 +28,7 @@ const SectionHaaS = () => {
         </HaasP>
         <HaasBtnWrapper>
           <BtnLink 
-            to='sign-up' 
+            to='signup' 
             onMouseEnter={onHover} 
             onMouseLeave={onHover}
             primary  
