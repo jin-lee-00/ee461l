@@ -19,3 +19,7 @@ To run the app:
 \> python flaskblog.py  
 To close the virtual environment:  
 \> deactivate
+
+
+# Frontend notes
+Added [react-bootstrap](https://react-bootstrap.netlify.app/getting-started/introduction/)
