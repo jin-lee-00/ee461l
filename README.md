@@ -21,5 +21,6 @@ To close the virtual environment:
 \> deactivate
 
 
-# Frontend notes
-Added [react-bootstrap](https://react-bootstrap.netlify.app/getting-started/introduction/)
+# Technologies Used
+[react-bootstrap](https://react-bootstrap.netlify.app/getting-started/introduction/)
+[styled components](https://styled-components.com/)
