@@ -2,11 +2,13 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Layout from '../components/layout/layout';
+import SignInUpNavBar from '../components/Navbar/SignInUpNavBar';
 
 const SignUpPage = () => {
   return (
     <>
      <Layout>
+       <SignInUpNavBar/>
         <h1>Sign Up Page</h1>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -34,6 +36,7 @@ const SignUpPage = () => {
             Sign up
           </Button>
         </Form>
+        <p>Already have an account? <a href="/sign-in">Sign in</a></p>
      </Layout>
     </>
   )
