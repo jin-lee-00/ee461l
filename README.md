@@ -20,6 +20,25 @@ To run the app:
 To close the virtual environment:  
 \> deactivate
 
+### Mac/Linux
+\> pip install python
+ 
+\> cd into ee461l folder
+\> pip install virtualenv
+\> python3 -m venv venv
+\> source venv/bin/activate
+ 
+in (venv):
+\> pip install flask
+ 
+to run the app:
+\> cd into server
+\> export FLASK_APP=app.py
+\> flask run
+ 
+to close the virtual environment: 
+\> deactivate
+
 
 # Technologies Used
 [react-bootstrap](https://react-bootstrap.netlify.app/getting-started/introduction/)
