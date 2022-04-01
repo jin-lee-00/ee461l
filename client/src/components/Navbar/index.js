@@ -82,7 +82,7 @@ const Navbar = ({ toggle }) => {
             </NavLink>
           </NavMenu>
           <NavBtn>
-            <NavBtnLink to='/sign-in'>Sign In</NavBtnLink>
+            <NavBtnLink to='/signin'>Sign In</NavBtnLink>
           </NavBtn>
         </Nav>
       </IconContext.Provider>
@@ -90,4 +90,4 @@ const Navbar = ({ toggle }) => {
   );
 };
 
-export default Navbar
+export default Navbar 
