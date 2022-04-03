@@ -27,7 +27,7 @@ const SignUp = () => {
               <FormInput type="email" required />
               <FormLabel>Password</FormLabel>
               <FormInput type="password" required />
-              <FormButton type="submit">Continue</FormButton>
+              <FormButton type="submit">Sign Up</FormButton>
               <Text>Already have an account? <a href ="/signin">Sign in</a> </Text>
             </Form>
           </FormContent>

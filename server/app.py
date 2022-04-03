@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from flask.helpers import send_from_directory
 import os
 
-app = Flask(__name__, static_folder='client/build', static_url_path='/')
+app = Flask(__name__)
 
 ##########################################################################################
 # MONGO DB STUFFS
@@ -31,4 +31,4 @@ Client.close()
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
+    app.run(debug=True)
