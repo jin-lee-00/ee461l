@@ -1,32 +1,36 @@
-from flask import Flask, jsonify
-from pymongo import MongoClient 
+from flask import Flask, jsonify, redirect
+import pymongo
 from flask.helpers import send_from_directory
 import os
 
 app = Flask(__name__)
+app.secret_key = "temp_secret_key"
 
 ##########################################################################################
 # MONGO DB STUFFS
 ##########################################################################################
 
 # connect to mongoDb client cluster0
-Client=MongoClient("mongodb+srv://noahz7213:R1saZSh8cH9gnpvt@cluster0.s4pmq.mongodb.net/Cluster0?retryWrites=true&w=majority")
+client = pymongo.MongoClient("localhost", 27017) # local db for development
 
-# get collevtions
-HWSet = Client.HWSet
-Projects = Client.Projects
+# get collections
+db_users = client.users
+db_HWSet = client.HWSet
+db_projects = client.projects
 
 ##########################################################################################
 # FLASK API FUNCTIONS
 ##########################################################################################
 
+# Decorators
+
 @app.route("/")
 def index():
-    return send_from_directory(app.static_folder, "index.html")
+    return "Hello World"
 
 ##########################################################################################
 
-Client.close()
+client.close()
 
 
 
