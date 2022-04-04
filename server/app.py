@@ -3,7 +3,7 @@ from flask_cors import CORS
 import pymongo
 from flask.helpers import send_from_directory
 import os
-from user.models import User
+# from user.models import User
 
 app = Flask(__name__)
 CORS(app)

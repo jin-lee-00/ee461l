@@ -50,12 +50,16 @@ const SignIn = () => {
         <FormWrap>
           <NavLink to="/">HaaS</NavLink>
           <FormContent>
-            <Form action="#">
+            <Form onSubmit={handleSubmit}>
               <FormH1>Sign In</FormH1>
               <FormLabel>Email</FormLabel>
-              <FormInput type="email" required />
+              <FormInput type="email" required 
+                onChange={handleEmailChange}
+              />
               <FormLabel>Password</FormLabel>
-              <FormInput type="password" required />
+              <FormInput type="password" required 
+                onChange={handlePasswordChange}
+              />
               <FormButton type="submit">Sign In</FormButton>
               <Text>Don't have an account? <a href ="/signup">Sign up</a> </Text>
             </Form>
