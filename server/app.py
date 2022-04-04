@@ -32,7 +32,7 @@ db_projects = data.projects
 
 # Routes
 #from user import routes
-@app.route('/user/signup', methods=["POST"])
+@app.route('/user/signup', methods=["GET", "POST"])
 def signup():
   request_data = json.loads(request.data)
   email = request_data['email']
@@ -40,14 +40,14 @@ def signup():
   password = request_data['password']
   user = db_users.find({},{ "email": email})
   # Check user is not in db_users
-  if user == None:
+  # if user == None:
   # Add user to db_users
-    db_users.insert_one(
-        { "name": name,
-          "email": email,
-          "password": password,
-        }
-    )
+  db_users.insert_one(
+      { "name": name,
+        "email": email,
+        "password": password,
+      }
+  )
   return request_data
 
 @app.route('/user/signin', methods=["POST"])
@@ -69,7 +69,7 @@ def home():
 
 ##########################################################################################
 
-client.close()
+# client.close()
 
 
 
