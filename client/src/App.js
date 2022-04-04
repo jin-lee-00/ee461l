@@ -11,7 +11,7 @@ import ProjectsPage from './pages/projects';
 import ResourcesPage from './pages/resources';
 import DatasetsPage from './pages/datasets';
 import AboutPage from './pages/about';
-import SignUpPage from './pages/signUp';
+import SignUpPage from './pages/signup';
 import NotFoundPage from './pages/notfound';
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='signin' element={<SigninPage/>} />
-        <Route path='signUp' element={<SignUpPage/>} />
+        <Route path='signup' element={<SignUpPage/>} />
         <Route path='projects' element={<ProjectsPage/>} />
         <Route path='resources' element={<ResourcesPage/>} />
         <Route path='datasets' element={<DatasetsPage/>} />
