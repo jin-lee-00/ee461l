@@ -32,14 +32,22 @@ db_projects = client.projects
 @app.route('/user/signup', methods=["POST"])
 def signup():
   request_data = json.loads(request.data)
+  
+  # TODO
+  # Check user is not in db_users
+  # Add user to db_users
+
   return request_data
-  # handle user creation
 
 @app.route('/user/signin', methods=["POST"])
 def signin():
   request_data = json.loads(request.data)
+
+  # TODO
+  # Check user is in db_users
+  # Authenticate (jwt?)
+
   return request_data
-  # handle user sign in
 
 @app.route("/")
 def home():
