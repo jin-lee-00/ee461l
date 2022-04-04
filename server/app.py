@@ -35,10 +35,9 @@ def signup():
   email = request_data['email']
   name = request_data['name']
   password = request_data['password']
-  # TODO
   user = db_users.find({},{ "email": email})
   # Check user is not in db_users
-  if(user == None):
+  if user == None:
   # Add user to db_users
     db_users.insertOne(
         { "name": name,
@@ -51,10 +50,11 @@ def signup():
 @app.route('/user/signin', methods=["POST"])
 def signin():
   request_data = json.loads(request.data)
-
-  # TODO
+  email = request_data['email']
+  user = db_users.find({},{ "email": email})
   # Check user is in db_users
-  # Authenticate (jwt?)
+  if (user != None):
+    # TODO: Authenticate (jwt?)
 
   return request_data
 
