@@ -11,7 +11,7 @@ import ProjectsPage from './pages/projects';
 import ResourcesPage from './pages/resources';
 import DatasetsPage from './pages/datasets';
 import AboutPage from './pages/about';
-import SignUpPage from './pages/signup';
+import SignUpPage from './pages/signUp';
 import NotFoundPage from './pages/notfound';
 
 const App = () => {

@@ -32,11 +32,20 @@ db_projects = client.projects
 @app.route('/user/signup', methods=["POST"])
 def signup():
   request_data = json.loads(request.data)
-  
+  email = request_data['email']
+  name = request_data['name']
+  password = request_data['password']
   # TODO
+  user = db_users.find({},{ "email": email})
   # Check user is not in db_users
+  if(user == None):
   # Add user to db_users
-
+    db_users.insertOne(
+        { "name": name,
+          "email": email,
+          "password": password,
+        }
+    )
   return request_data
 
 @app.route('/user/signin', methods=["POST"])
