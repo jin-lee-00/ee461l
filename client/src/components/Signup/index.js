@@ -19,37 +19,35 @@ const SignUp = () => {
 
   const handleNameChange = (e) => {
     setName(e.target.value)
-    console.log(name)
   }
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
-    console.log(email)
   }
   const handlePasswordChange = (e) => {
     setPassword(e.target.value)
-    console.log(password)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     fetch("http://localhost:5000/user/signup", {
       method: "POST",
       body: JSON.stringify({
-        name:name,
-        email:email,
+        name: name, 
+        email: email, 
         password: password
       }),
       headers: {
         "Content-type": "application/json"
       }
     })
-    //.then(response => console.log(response))
-    /*.then(
-      message => {
-        console.log("Hello")
-        setName("")
-        setEmail("")
-        setPassword("")  
-      })*/
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      setName("")
+      setEmail("")
+      setPassword("")
+    }
+    )
   }
   return (
     <>

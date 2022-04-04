@@ -1,12 +1,12 @@
 from flask import Flask, jsonify, request, json, redirect
-# from flask_cors import CORS
+from flask_cors import CORS
 import pymongo
 from flask.helpers import send_from_directory
 import os
 from user.models import User
 
 app = Flask(__name__)
-# app = CORS(app)
+CORS(app)
 app.secret_key = "temp_secret_key"
 
 ##########################################################################################
@@ -31,7 +31,9 @@ db_projects = client.projects
 #from user import routes
 @app.route('/user/signup', methods=["POST"])
 def signup():
-  return User().signup()
+  request_data = json.loads(request.data)
+  return request_data
+  # handle user creation
 
 @app.route("/")
 def home():
