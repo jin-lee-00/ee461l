@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { findAllInRenderedTree } from "react-dom/test-utils";
 import Entries from "./Entries";
 import {
@@ -18,6 +18,22 @@ const GUI = ({ sectionName, unit }) => {
   const [showAddEntry, setShowAddEntry] = useState(false)
   const [entries, setEntries] = useState([])
 
+  useEffect(() => {
+    const getEntries = async () => {
+      const entriesFromServer = await fetchEntries()
+      setEntries(entriesFromServer)
+    }
+    
+    getEntries()
+  }, [])
+
+  const fetchEntries = async () => {
+    const res = await fetch("http://localhost:5000/project/getall")
+    const data = await res.json()
+
+    return data
+  }
+
   const onClick =() => {
     setShowAddEntry(!showAddEntry)
   }
@@ -34,6 +50,22 @@ const GUI = ({ sectionName, unit }) => {
   const addEntry =(entry) => {
     const id = Math.floor(Math.random() * 10000) + 1
     const newEntry = { id, ...entry}
+    fetch("http://localhost:5000/project/add", {
+      method: "POST",
+      body: JSON.stringify({
+        id: newEntry.id,
+        name: newEntry.name,
+        desc: newEntry.description
+      }),
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    }
+    )
     setEntries([...entries, newEntry])
   }
 

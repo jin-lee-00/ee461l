@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, json, redirect
 from flask_cors import CORS
 import pymongo
+from bson.json_util import dumps
 from flask.helpers import send_from_directory
 import os
 # from user.models import User
@@ -28,10 +29,7 @@ db_projects = data.projects
 # FLASK API FUNCTIONS
 ##########################################################################################
 
-# Decorators
-
-# Routes
-#from user import routes
+## users 
 @app.route('/user/signup', methods=["GET", "POST"])
 def signup():
   request_data = json.loads(request.data)
@@ -60,6 +58,29 @@ def signin():
     # TODO: Authenticate (jwt?)
 
   return request_data
+
+## projects
+@app.route('/project/add', methods=['POST'])
+def addproject():
+  request_data = json.loads(request.data)
+  _id = request_data["id"]
+  name = request_data["name"]
+  desc = request_data["desc"]
+  resources = [0,0] # Init checked out HWSets 1, 2 to 0
+  db_projects.insert_one({
+    "_id": _id,
+    "name": name,
+    "desc": desc,
+    "resources": resources
+  })
+  return request_data
+
+@app.route('/project/getall')
+def getprojects():
+  projects_cursor = db_projects.find()
+  projects_list = list(projects_cursor)
+  projects_json = dumps(projects_list)
+  return projects_json
 
 @app.route("/")
 def home():
