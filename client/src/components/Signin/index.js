@@ -25,7 +25,7 @@ const SignIn = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/user/signup", {
+    fetch("http://localhost:5000/user/signin", {
       method: "POST",
       body: JSON.stringify({ 
         email: email, 
