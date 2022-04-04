@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { 
   Container, 
   FormWrap,
@@ -13,6 +13,37 @@ import {
 } from './Signin.style'
 
 const SignIn = () => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value)
+  }
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value)
+  }
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:5000/user/signup", {
+      method: "POST",
+      body: JSON.stringify({ 
+        email: email, 
+        password: password
+      }),
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      setEmail("")
+      setPassword("")
+    }
+    )
+  }
+
   return (
     <>
       <Container>

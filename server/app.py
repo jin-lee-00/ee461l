@@ -35,6 +35,12 @@ def signup():
   return request_data
   # handle user creation
 
+@app.route('/user/signin', methods=["POST"])
+def signin():
+  request_data = json.loads(request.data)
+  return request_data
+  # handle user sign in
+
 @app.route("/")
 def home():
     return "Hello World"
