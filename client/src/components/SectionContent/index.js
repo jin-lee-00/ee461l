@@ -1,5 +1,5 @@
 import React from 'react';
-import { BtnScroll, BtnLink } from '../Button.style';
+import { BtnLink } from '../Button.style';
 import { 
   ContentContainer, 
   ContentWrapper, 
@@ -14,13 +14,14 @@ import {
   ImgWrap,
   Img
 } from './SectionContent.style'
-import 
-  GUI
- from '../GUI'
+import GUI from '../GUI'
+import GUIProject from '../GUIProject';
+
+
+
 const SectionContent = ({
   lightBg, 
   id, 
-  unit,
   imgStart, 
   topLine, 
   lightText,
@@ -28,13 +29,20 @@ const SectionContent = ({
   darkText, 
   description, 
   buttonLabel, 
-  img, 
-  alt,
   primary,
-  dark,
-  dark2,
   route
 }) => {
+
+  const renderGUI = ({id}) => {
+    switch(id) {
+      case "projects":
+        return <GUIProject />;
+      default:
+        return <GUI sectionName={"test"}/>
+    }
+  }
+
+
   return (
     <>
       <ContentContainer lightBg={lightBg} id={id}>
@@ -60,10 +68,7 @@ const SectionContent = ({
             </Column1>
             <Column2>
               <ImgWrap>
-                <GUI 
-                  sectionName={id}
-                  unit={unit}
-                />
+                {renderGUI({id})}
               </ImgWrap>
              </Column2>
           </ContentRow>

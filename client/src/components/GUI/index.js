@@ -63,7 +63,7 @@ const GUI = ({ sectionName, unit }) => {
 
 
   const addEntry = (entry) => {
-    const _id = Math.floor(Math.random() * 10000) + 1
+    const _id = Math.floor(Math.random() * 1000000) + 1
     const newEntry = { _id, ...entry}
     fetch("http://localhost:5000/project/add", {
       method: "POST",

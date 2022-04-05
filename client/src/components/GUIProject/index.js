@@ -1,34 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { findAllInRenderedTree } from "react-dom/test-utils";
-import Entries from "./Entries";
+import Projects from "./Projects";
 import {
   GUIContainer,
   Header,
-  TextWrapper,
   TopLine,
-  Heading,
-  ContentRow,
-  Column1,
-  Column2,
   GUIButton
 } from './GUI.style';
-import AddEntry from "./AddEntry";
+import AddProject from "./AddProject";
 
-const GUI = ({ sectionName, unit }) => {
-  const [showAddEntry, setShowAddEntry] = useState(false)
-  const [entries, setEntries] = useState([])
+const GUIProject = () => {
+  const [showAddProject, setShowAddProject] = useState(false)
+  const [projects, setProjects] = useState([])
 
   useEffect(() => {
-    const getEntries = async () => {
-      const entriesFromServer = await fetchEntries()
-      setEntries(entriesFromServer)
-      console.log(entries)
+    const getProjects = async () => {
+      const projectsFromServer = await fetchProjects()
+      setProjects(projectsFromServer)
+      console.log(projects)
     }
     
-    getEntries()
+    getProjects()
   }, [])
 
-  const fetchEntries = async () => {
+  const fetchProjects = async () => {
     const res = await fetch("http://localhost:5000/project/getall")
     const data = await res.json()
     console.log(data)
@@ -36,14 +30,14 @@ const GUI = ({ sectionName, unit }) => {
   }
 
   const onClick =() => {
-    setShowAddEntry(!showAddEntry)
+    setShowAddProject(!showAddProject)
   }
 
-  const manageEntry = (name) => {
-    alert("manage entry " + name)
+  const manageProject = (name) => {
+    alert("manage project " + name)
   }
 
-  const deleteEntry = (_id) => {
+  const deleteProject = (_id) => {
     console.log("test" + _id)
     fetch("http://localhost:5000/project/delete", {
       method: "POST",
@@ -57,20 +51,20 @@ const GUI = ({ sectionName, unit }) => {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      setEntries(entries.filter((entry) => entry._id !== _id))
+      setProjects(projects.filter((project) => project._id !== _id))
     })
   }
 
 
-  const addEntry = (entry) => {
-    const _id = Math.floor(Math.random() * 10000) + 1
-    const newEntry = { _id, ...entry}
+  const addProject = (project) => {
+    const _id = Math.floor(Math.random() * 1000000) + 1
+    const newProject = { _id, ...project}
     fetch("http://localhost:5000/project/add", {
       method: "POST",
       body: JSON.stringify({
-        _id: newEntry._id,
-        name: newEntry.name,
-        desc: newEntry.description
+        _id: newProject._id,
+        name: newProject.name,
+        desc: newProject.description
       }),
       headers: {
         "Content-type": "application/json"
@@ -80,72 +74,27 @@ const GUI = ({ sectionName, unit }) => {
     .then(data => {
       console.log(data)
     })
-    setEntries([...entries, newEntry])
+    setProjects([...projects, newProject])
   }
 
   return (
     <GUIContainer primary='true'>
       <Header>
         
-        <TopLine>{sectionName}</TopLine>
+        <TopLine>Projects</TopLine>
         <GUIButton 
           onClick={onClick}
-          primary={showAddEntry}
         >
-          {showAddEntry ? '-' : '+'}
+          {showAddProject ? '-' : '+'}
         </GUIButton>
       </Header>
-      {showAddEntry && <AddEntry onAdd={addEntry}/>}
-      {entries.length > 0 ? <Entries entries={entries} 
-        onManage={manageEntry}
-        onDelete={deleteEntry}
-      /> : 'No Entries'}
+      {showAddProject && <AddProject onAdd={addProject}/>}
+      {projects.length > 0 ? <Projects projects={projects} 
+        onManage={manageProject}
+        onDelete={deleteProject}
+      /> : 'No Projects'}
     </GUIContainer>
   )
 }
 
-export default GUI
-
-/*
-export class GUI extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0,
-      primary: true
-    };
-  }
-
-  render() {
-    return (
-      <GUIContainer primary={this.state.primary}>
-        <TextWrapper>
-          <TopLine>Mock {this.props.topline} Display </TopLine>
-          <Heading primary={this.state.primary}
-            onClick={() =>
-              this.setState({ primary: !this.state.primary})}
-          >
-            {this.state.count}
-          </Heading>
-        </TextWrapper>
-        <ContentRow>
-          <Column1>
-            <GUIButton onClick={() =>
-              this.setState({ count: this.state.count + 1})}
-            >
-              +
-            </GUIButton>
-          </Column1>
-          <Column2>
-            <GUIButton onClick={() =>
-              this.setState({ count: this.state.count - 1})}
-            >
-              -
-            </GUIButton>
-          </Column2>
-        </ContentRow>
-      </GUIContainer>
-    );
-  }
-}
-*/
+export default GUIProject

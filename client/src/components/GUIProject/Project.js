@@ -1,6 +1,5 @@
 import React from 'react'
 import { FaTimes } from 'react-icons/fa'
-import { BtnLink } from '../Button.style'
 import { 
   EntryHeader, 
   EntryText, 
@@ -8,25 +7,25 @@ import {
   GUIButton
 } from './GUI.style'
 
-const Entry = ({ entry, onManage, onDelete }) => {
+const Project = ({ project, onManage, onDelete }) => {
   return (
     <EntryWrapper>
       <EntryHeader>
-        <h3>{entry.name}</h3>
+        <h3>{project.name}</h3>
         <GUIButton primary='true'
-          onClick={() => onManage(entry._id)}
+          onClick={() => onManage(project._id)}
         >
           Manage
         </GUIButton>
         <FaTimes 
-          onClick={() => onDelete(entry._id)}
+          onClick={() => onDelete(project._id)}
         />
       </EntryHeader>
       <EntryText>
-        {entry._id}
+        {project._id}
       </EntryText>
     </EntryWrapper>
   )
 }
 
-export default Entry
+export default Project

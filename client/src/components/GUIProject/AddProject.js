@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
-import { EntryForm, FormBtn, FormContainer, FormInput, FormLabel, GUIButton } from './GUI.style'
+import { 
+  EntryForm, 
+  FormBtn, 
+  FormContainer, 
+  FormInput, 
+  FormLabel 
+} from './GUI.style'
 
-const AddEntry = ({ onAdd }) => {
+const AddProject = ({ onAdd }) => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
 
@@ -22,10 +28,10 @@ const AddEntry = ({ onAdd }) => {
   return (
     <EntryForm onSubmit={onSubmit}>
       <FormContainer>
-        <FormLabel>Entry</FormLabel>
+        <FormLabel>Name</FormLabel>
         <FormInput 
           type='text' 
-          placeholder='Add Entry'
+          placeholder='Project name'
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -34,15 +40,15 @@ const AddEntry = ({ onAdd }) => {
         <FormLabel>Description</FormLabel>
         <FormInput 
           type='text' 
-          placeholder='Add Description' 
+          placeholder='Description' 
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
       </FormContainer>
 
-      <FormBtn type='submit' value='Save Entry' />
+      <FormBtn type='submit' value='Create Project' />
     </EntryForm>
   )
 }
 
-export default AddEntry
+export default AddProject
