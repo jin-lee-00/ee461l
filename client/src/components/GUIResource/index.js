@@ -1,51 +1,45 @@
 import React, { useState, useEffect } from "react";
-import { findAllInRenderedTree } from "react-dom/test-utils";
-import Entries from "./Entries";
+import Resources from "./Resources";
 import {
   GUIContainer,
   Header,
-  TextWrapper,
   TopLine,
-  Heading,
-  ContentRow,
-  Column1,
-  Column2,
   GUIButton
 } from './GUI.style';
-import AddEntry from "./AddEntry";
+import AddResource from "./AddResource";
 
-const GUI = ({ sectionName, unit }) => {
-  const [showAddEntry, setShowAddEntry] = useState(false)
-  const [entries, setEntries] = useState([])
+const GUIResource = () => {
+  const [showAddResource, setShowAddResource] = useState(false)
+  const [resources, setResources] = useState([])
 
   useEffect(() => {
-    const getEntries = async () => {
-      const entriesFromServer = await fetchEntries()
-      setEntries(entriesFromServer)
-      console.log(entries)
+    const getResources = async () => {
+      const resourcesFromServer = await fetchResources()
+      setResources(resourcesFromServer)
+      console.log(resources)
     }
     
-    getEntries()
+    getResources()
   }, [])
 
-  const fetchEntries = async () => {
-    const res = await fetch("http://localhost:5000/project/getall")
+  const fetchResources = async () => {
+    const res = await fetch("http://localhost:5000/resource/getall")
     const data = await res.json()
     console.log(data)
     return data
   }
 
   const onClick =() => {
-    setShowAddEntry(!showAddEntry)
+    setShowAddResource(!showAddResource)
   }
 
-  const manageEntry = (name) => {
-    alert("manage entry " + name)
+  const manageResource = (name) => {
+    alert("manage resource " + name)
   }
 
-  const deleteEntry = (_id) => {
+  const deleteResource = (_id) => {
     console.log("test" + _id)
-    fetch("http://localhost:5000/project/delete", {
+    fetch("http://localhost:5000/resource/delete", {
       method: "POST",
       body: JSON.stringify({
         _id: _id
@@ -57,20 +51,20 @@ const GUI = ({ sectionName, unit }) => {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      setEntries(entries.filter((entry) => entry._id !== _id))
+      setResources(resources.filter((resource) => resource._id !== _id))
     })
   }
 
 
-  const addEntry = (entry) => {
+  const addResource = (resource) => {
     const _id = Math.floor(Math.random() * 10000) + 1
-    const newEntry = { _id, ...entry}
-    fetch("http://localhost:5000/project/add", {
+    const newResource = { _id, ...resource}
+    fetch("http://localhost:5000/resource/add", {
       method: "POST",
       body: JSON.stringify({
-        _id: newEntry._id,
-        name: newEntry.name,
-        desc: newEntry.description
+        _id: newResource._id,
+        name: newResource.name,
+        desc: newResource.description
       }),
       headers: {
         "Content-type": "application/json"
@@ -80,31 +74,28 @@ const GUI = ({ sectionName, unit }) => {
     .then(data => {
       console.log(data)
     })
-    setEntries([...entries, newEntry])
+    setResources([...resources, newResource])
   }
 
   return (
     <GUIContainer primary='true'>
       <Header>
         
-        <TopLine>{sectionName}</TopLine>
-        <GUIButton 
-          onClick={onClick}
-          primary={showAddEntry}
-        >
-          {showAddEntry ? '-' : '+'}
+        <TopLine>Resources</TopLine>
+        <GUIButton onClick={onClick}>
+          {showAddResource ? '-' : '+'}
         </GUIButton>
       </Header>
-      {showAddEntry && <AddEntry onAdd={addEntry}/>}
-      {entries.length > 0 ? <Entries entries={entries} 
-        onManage={manageEntry}
-        onDelete={deleteEntry}
-      /> : 'No Entries'}
+      {showAddResource && <AddResource onAdd={addResource}/>}
+      {resources.length > 0 ? <Resources resources={resources} 
+        onManage={manageResource}
+        onDelete={deleteResource}
+      /> : 'No Resources'}
     </GUIContainer>
   )
 }
 
-export default GUI
+export default GUIResource
 
 /*
 export class GUI extends React.Component {

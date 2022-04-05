@@ -22,7 +22,7 @@ data = client.data
 
 # get collections
 db_users = data.users
-db_HWSet = data.HWSet
+db_resources = data.resources
 db_projects = data.projects
 
 ##########################################################################################
@@ -88,6 +88,36 @@ def getprojects():
   projects_list = list(projects_cursor)
   projects_json = dumps(projects_list)
   return projects_json
+
+## resources
+@app.route('/resource/add', methods=['POST'])
+def addresource():
+  request_data = json.loads(request.data)
+  _id = request_data["_id"]
+  name = request_data["name"]
+  desc = request_data["desc"]
+  resources = [0,0] # Init checked out HWSets 1, 2 to 0
+  db_resources.insert_one({
+    "_id": _id,
+    "name": name,
+    "desc": desc,
+    "resources": resources
+  })
+  return request_data
+
+@app.route('/resource/delete', methods=['POST'])
+def deleteresource():
+  request_data = json.loads(request.data)
+  _id = request_data["_id"]
+  db_resources.delete_one({"_id": _id})
+  return request_data
+
+@app.route('/resource/getall')
+def getresources():
+  resources_cursor = db_resources.find()
+  resources_list = list(resources_cursor)
+  resources_json = dumps(resources_list)
+  return resources_json
 
 @app.route("/")
 def home():

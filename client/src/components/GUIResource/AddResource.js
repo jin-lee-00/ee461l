@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { EntryForm, FormBtn, FormContainer, FormInput, FormLabel, GUIButton } from './GUI.style'
 
-const AddEntry = ({ onAdd }) => {
+const AddResource = ({ onAdd }) => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
 
@@ -9,7 +9,7 @@ const AddEntry = ({ onAdd }) => {
     e.preventDefault()
 
     if(!name) {
-      alert('Please name the entry')
+      alert('Please name the resourrce')
       return
     }
 
@@ -22,10 +22,10 @@ const AddEntry = ({ onAdd }) => {
   return (
     <EntryForm onSubmit={onSubmit}>
       <FormContainer>
-        <FormLabel>Entry</FormLabel>
+        <FormLabel>Resources</FormLabel>
         <FormInput 
           type='text' 
-          placeholder='Add Entry'
+          placeholder='Resource name'
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -40,9 +40,9 @@ const AddEntry = ({ onAdd }) => {
         />
       </FormContainer>
 
-      <FormBtn type='submit' value='Save Entry' />
+      <FormBtn type='submit' value='Create Resource' />
     </EntryForm>
   )
 }
 
-export default AddEntry
+export default AddResource

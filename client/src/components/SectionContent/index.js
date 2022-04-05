@@ -16,8 +16,7 @@ import {
 } from './SectionContent.style'
 import GUI from '../GUI'
 import GUIProject from '../GUIProject';
-
-
+import GUIResource from '../GUIResource';
 
 const SectionContent = ({
   lightBg, 
@@ -37,6 +36,8 @@ const SectionContent = ({
     switch(id) {
       case "projects":
         return <GUIProject />;
+      case "resources":
+        return <GUIResource />;
       default:
         return <GUI sectionName={"test"}/>
     }
