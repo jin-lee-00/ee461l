@@ -4,8 +4,8 @@ import Entry from './Entry'
 const Entries = ({ entries, onManage, onDelete }) => {
   return (
     <>
-      {entries.map((entry) => (
-        <Entry key={entry.id} entry={entry} 
+      {entries.map((entry, index) => (
+        <Entry key={index} entry={entry} 
           onManage={onManage}
           onDelete={onDelete}
         />

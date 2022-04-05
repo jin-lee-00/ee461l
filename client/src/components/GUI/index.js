@@ -14,7 +14,7 @@ import {
 } from './GUI.style';
 import AddEntry from "./AddEntry";
 
-const GUI = ({ sectionName, unit }) => {
+const GUI = ({ sectionName }) => {
   const [showAddEntry, setShowAddEntry] = useState(false)
   const [entries, setEntries] = useState([])
 
@@ -22,6 +22,7 @@ const GUI = ({ sectionName, unit }) => {
     const getEntries = async () => {
       const entriesFromServer = await fetchEntries()
       setEntries(entriesFromServer)
+      console.log(entries)
     }
     
     getEntries()
@@ -30,7 +31,7 @@ const GUI = ({ sectionName, unit }) => {
   const fetchEntries = async () => {
     const res = await fetch("http://localhost:5000/project/getall")
     const data = await res.json()
-
+    console.log(data)
     return data
   }
 
@@ -42,18 +43,32 @@ const GUI = ({ sectionName, unit }) => {
     alert("manage entry " + name)
   }
 
-  const deleteEntry = (id) => {
-    setEntries(entries.filter((task) => task.id !== id))
+  const deleteEntry = (_id) => {
+    console.log("test" + _id)
+    fetch("http://localhost:5000/project/delete", {
+      method: "POST",
+      body: JSON.stringify({
+        _id: _id
+      }),
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      setEntries(entries.filter((entry) => entry._id !== _id))
+    })
   }
 
 
-  const addEntry =(entry) => {
-    const id = Math.floor(Math.random() * 10000) + 1
-    const newEntry = { id, ...entry}
+  const addEntry = (entry) => {
+    const _id = Math.floor(Math.random() * 10000) + 1
+    const newEntry = { _id, ...entry}
     fetch("http://localhost:5000/project/add", {
       method: "POST",
       body: JSON.stringify({
-        id: newEntry.id,
+        _id: newEntry._id,
         name: newEntry.name,
         desc: newEntry.description
       }),
@@ -64,8 +79,7 @@ const GUI = ({ sectionName, unit }) => {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-    }
-    )
+    })
     setEntries([...entries, newEntry])
   }
 

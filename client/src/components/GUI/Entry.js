@@ -14,16 +14,16 @@ const Entry = ({ entry, onManage, onDelete }) => {
       <EntryHeader>
         <h3>{entry.name}</h3>
         <GUIButton primary='true'
-          onClick={() => onManage(entry.name)}
+          onClick={() => onManage(entry._id)}
         >
           Manage
         </GUIButton>
         <FaTimes 
-          onClick={() => onDelete(entry.id)}
+          onClick={() => onDelete(entry._id)}
         />
       </EntryHeader>
       <EntryText>
-        {entry.description}
+        {entry._id}
       </EntryText>
     </EntryWrapper>
   )

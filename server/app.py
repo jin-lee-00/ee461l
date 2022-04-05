@@ -63,7 +63,7 @@ def signin():
 @app.route('/project/add', methods=['POST'])
 def addproject():
   request_data = json.loads(request.data)
-  _id = request_data["id"]
+  _id = request_data["_id"]
   name = request_data["name"]
   desc = request_data["desc"]
   resources = [0,0] # Init checked out HWSets 1, 2 to 0
@@ -73,6 +73,13 @@ def addproject():
     "desc": desc,
     "resources": resources
   })
+  return request_data
+
+@app.route('/project/delete', methods=['POST'])
+def deleteproject():
+  request_data = json.loads(request.data)
+  _id = request_data["_id"]
+  db_projects.delete_one({"_id": _id})
   return request_data
 
 @app.route('/project/getall')
