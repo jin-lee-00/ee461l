@@ -86,7 +86,9 @@ def deleteproject():
 def getproject(_id):
   #request_data = json.loads(request_data)
   #_id = request_data["_id"]
-  project_cursor = db_projects.find_one({"_id":_id})
+  print(_id)
+  project_cursor = db_projects.find_one({"_id":int(_id)})
+  print(project_cursor)
   project_json = dumps(project_cursor)
   return project_json
 
