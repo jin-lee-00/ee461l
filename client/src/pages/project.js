@@ -1,14 +1,12 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import ProjectDashboard from '../components/Project';
 
 const ProjectPage = () => {
   const {_id} = useParams();
 
   return (
-    <>
-      <h1>Manage Project</h1>
-      <p>Project ID: {_id}</p>
-    </>
+    <ProjectDashboard _id={_id} />
   )
 }
 

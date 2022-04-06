@@ -79,8 +79,16 @@ def addproject():
 def deleteproject():
   request_data = json.loads(request.data)
   _id = request_data["_id"]
-  db_projects.delete_one({"_id": _id})
+  db_projects.delete_one({"_id":_id})
   return request_data
+
+@app.route('/project/get/<_id>')
+def getproject(_id):
+  #request_data = json.loads(request_data)
+  #_id = request_data["_id"]
+  project_cursor = db_projects.find_one({"_id":_id})
+  project_json = dumps(project_cursor)
+  return project_json
 
 @app.route('/project/getall')
 def getprojects():
