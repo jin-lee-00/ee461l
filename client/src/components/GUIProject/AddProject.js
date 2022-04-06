@@ -29,7 +29,7 @@ const AddProject = ({ onAdd }) => {
     <EntryForm onSubmit={onSubmit}>
       <FormContainer>
         <FormLabel>Name</FormLabel>
-        <FormInput 
+        <FormInput required
           type='text' 
           placeholder='Project name'
           value={name}
@@ -38,7 +38,7 @@ const AddProject = ({ onAdd }) => {
       </FormContainer>
       <FormContainer>
         <FormLabel>Description</FormLabel>
-        <FormInput 
+        <FormInput required
           type='text' 
           placeholder='Description' 
           value={description}

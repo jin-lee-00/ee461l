@@ -22,7 +22,10 @@ const Resource = ({ resource, onManage, onDelete }) => {
         />
       </EntryHeader>
       <EntryText>
-        {resource._id}
+        Capacity: {resource.capacity} 
+      </EntryText>
+      <EntryText>
+        Availability: {resource.availability} 
       </EntryText>
     </EntryWrapper>
   )

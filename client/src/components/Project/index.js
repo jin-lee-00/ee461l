@@ -33,7 +33,7 @@ const ProjectDashboard = ({ _id }) => {
       <div>Description: {desc}</div>
       <>
         {Object.entries(resources).map(([key, value]) =>(
-          <p>{key} : {value}</p>
+          <p key={key}>{key} : {value}</p>
         ))}
       </>
     </>

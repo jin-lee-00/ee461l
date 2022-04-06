@@ -3,7 +3,7 @@ import { EntryForm, FormBtn, FormContainer, FormInput, FormLabel, GUIButton } fr
 
 const AddResource = ({ onAdd }) => {
   const [name, setName] = useState('')
-  const [capacity, setCapacity] = useState('')
+  const [capacity, setCapacity] = useState()
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -23,7 +23,7 @@ const AddResource = ({ onAdd }) => {
     <EntryForm onSubmit={onSubmit}>
       <FormContainer>
         <FormLabel>Name</FormLabel>
-        <FormInput 
+        <FormInput required
           type='text' 
           placeholder='Resource name'
           value={name}
@@ -32,7 +32,7 @@ const AddResource = ({ onAdd }) => {
       </FormContainer>
       <FormContainer>
         <FormLabel>Capacity</FormLabel>
-        <FormInput 
+        <FormInput required 
           type='number' 
           placeholder='Add capacity' 
           value={capacity}
