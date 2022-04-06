@@ -65,13 +65,18 @@ const GUIProject = () => {
 
   const addProject = (project) => {
     const _id = Math.floor(Math.random() * 1000000) + 1
-    const newProject = { _id, ...project}
+    const resources = {
+      "HWSet1": 0,
+      "HWSet2": 0
+    }
+    const newProject = { _id, ...project, resources}
     fetch("http://localhost:5000/project/add", {
       method: "POST",
       body: JSON.stringify({
         _id: newProject._id,
         name: newProject.name,
-        desc: newProject.description
+        desc: newProject.description,
+        resources: newProject.resources
       }),
       headers: {
         "Content-type": "application/json"

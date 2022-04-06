@@ -66,7 +66,7 @@ def addproject():
   _id = request_data["_id"]
   name = request_data["name"]
   desc = request_data["desc"]
-  resources = [0,0] # Init checked out HWSets 1, 2 to 0
+  resources = request_data["resources"] # Init checked out HWSets 1, 2 to 0
   db_projects.insert_one({
     "_id": _id,
     "name": name,
@@ -114,7 +114,7 @@ def addresource():
     "capacity": capacity,
     "availability": availability,
     "checkout": checkout
-  })
+  }) 
   return request_data
 
 @app.route('/resource/delete', methods=['POST'])

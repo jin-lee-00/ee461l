@@ -11,7 +11,7 @@ const Project = ({ project, onManage, onDelete }) => {
   return (
     <EntryWrapper>
       <EntryHeader>
-        <h3>{project.name}</h3>
+        <h3>{project.name} ({project._id})</h3>
         <GUIButton primary='true'
           onClick={() => onManage(project._id)}
         >
@@ -21,9 +21,11 @@ const Project = ({ project, onManage, onDelete }) => {
           onClick={() => onDelete(project._id)}
         />
       </EntryHeader>
-      <EntryText>
-        {project._id}
-      </EntryText>
+      <>
+        {Object.entries(project.resources).map(([key, value]) =>(
+          <EntryText key={key}>{key} : {value}</EntryText>
+        ))}
+      </>
     </EntryWrapper>
   )
 }

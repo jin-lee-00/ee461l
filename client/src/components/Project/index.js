@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react'
 
 const ProjectDashboard = ({ _id }) => {
+  const [name, setName] = useState("")
+  const [desc, setDesc] = useState("")
+  const [resources, setResources] = useState({})
+
   useEffect(() => {
     const getProject = async () => {
       const projectFromServer = await fetchProject()
       console.log("get project")
       console.log(projectFromServer)
+      setName(projectFromServer["name"])
+      setDesc(projectFromServer["desc"])
+      setResources(projectFromServer["resources"])
     }
     
     getProject()
@@ -21,8 +28,14 @@ const ProjectDashboard = ({ _id }) => {
 
   return (
     <>
-      <div>Project Dashboard</div>
-      <div>{_id}</div>
+      <div>Project: {name}</div>
+      <div>ID: {_id}</div>
+      <div>Description: {desc}</div>
+      <>
+        {Object.entries(resources).map(([key, value]) =>(
+          <p>{key} : {value}</p>
+        ))}
+      </>
     </>
   )
 }
