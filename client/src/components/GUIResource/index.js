@@ -64,7 +64,7 @@ const GUIResource = () => {
       body: JSON.stringify({
         _id: newResource._id,
         name: newResource.name,
-        desc: newResource.description
+        capacity: newResource.capacity
       }),
       headers: {
         "Content-type": "application/json"

@@ -12,10 +12,10 @@ CORS(app)
 app.secret_key = "temp_secret_key"
 
 ##########################################################################################
-# MONGO DB STUFFS
+# DATABASE
 ##########################################################################################
 
-# # connect to mongoDb client cluster0
+## connect to mongoDb client cluster0
 client = pymongo.MongoClient("localhost", 27017) # local db for development
 
 data = client.data
@@ -26,7 +26,7 @@ db_resources = data.resources
 db_projects = data.projects
 
 ##########################################################################################
-# FLASK API FUNCTIONS
+# API
 ##########################################################################################
 
 ## users 
@@ -95,13 +95,15 @@ def addresource():
   request_data = json.loads(request.data)
   _id = request_data["_id"]
   name = request_data["name"]
-  desc = request_data["desc"]
-  resources = [0,0] # Init checked out HWSets 1, 2 to 0
+  capacity = int(request_data["capacity"])
+  availability = capacity
+  checkout = {} # store checkout as [user:qty] key:value pair
   db_resources.insert_one({
     "_id": _id,
     "name": name,
-    "desc": desc,
-    "resources": resources
+    "capacity": capacity,
+    "availability": availability,
+    "checkout": checkout
   })
   return request_data
 

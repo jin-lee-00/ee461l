@@ -3,7 +3,7 @@ import { EntryForm, FormBtn, FormContainer, FormInput, FormLabel, GUIButton } fr
 
 const AddResource = ({ onAdd }) => {
   const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
+  const [capacity, setCapacity] = useState('')
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -13,10 +13,10 @@ const AddResource = ({ onAdd }) => {
       return
     }
 
-    onAdd({name, description})
+    onAdd({name, capacity})
     
     setName('')
-    setDescription('')
+    setCapacity('')
   }
 
   return (
@@ -31,12 +31,12 @@ const AddResource = ({ onAdd }) => {
         />
       </FormContainer>
       <FormContainer>
-        <FormLabel>Description</FormLabel>
+        <FormLabel>Capacity</FormLabel>
         <FormInput 
-          type='text' 
-          placeholder='Add Description' 
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          type='number' 
+          placeholder='Add capacity' 
+          value={capacity}
+          onChange={(e) => setCapacity(e.target.value)}
         />
       </FormContainer>
 

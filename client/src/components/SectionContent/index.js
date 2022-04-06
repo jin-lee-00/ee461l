@@ -39,7 +39,7 @@ const SectionContent = ({
       case "resources":
         return <GUIResource />;
       default:
-        return <GUI sectionName={"test"}/>
+        return "";
     }
   }
 
