@@ -7,8 +7,15 @@ import {
   GUIButton
 } from './GUI.style';
 import AddProject from "./AddProject";
+import { useNavigate } from "react-router-dom";
 
 const GUIProject = () => {
+
+  let navigate = useNavigate();
+  const routeChange = (name) => {
+    navigate("/project/" + name)
+  }
+
   const [showAddProject, setShowAddProject] = useState(false)
   const [projects, setProjects] = useState([])
 
@@ -33,8 +40,8 @@ const GUIProject = () => {
     setShowAddProject(!showAddProject)
   }
 
-  const manageProject = (name) => {
-    alert("manage project " + name)
+  const manageProject = (_id) => {
+    routeChange(_id)
   }
 
   const deleteProject = (_id) => {

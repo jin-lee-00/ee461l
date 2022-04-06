@@ -13,6 +13,7 @@ import DatasetsPage from './pages/datasets';
 import AboutPage from './pages/about';
 import SignUpPage from './pages/signUp';
 import NotFoundPage from './pages/notfound';
+import ProjectPage from './pages/project';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='signin' element={<SigninPage/>} />
         <Route path='signup' element={<SignUpPage/>} />
         <Route path='projects' element={<ProjectsPage/>} />
+        <Route path='project/:_id' element={<ProjectPage/>} />
         <Route path='resources' element={<ResourcesPage/>} />
         <Route path='datasets' element={<DatasetsPage/>} />
         <Route path='about' element={<AboutPage/>} />
