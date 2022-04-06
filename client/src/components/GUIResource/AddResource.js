@@ -22,7 +22,7 @@ const AddResource = ({ onAdd }) => {
   return (
     <EntryForm onSubmit={onSubmit}>
       <FormContainer>
-        <FormLabel>Resources</FormLabel>
+        <FormLabel>Name</FormLabel>
         <FormInput 
           type='text' 
           placeholder='Resource name'

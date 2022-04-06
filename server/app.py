@@ -124,7 +124,7 @@ def getresources():
 @app.route("/")
 def home():
     # return send_from_directory(app.static_folder, "index.html")
-    return "Hello World"
+    return "HaaS Project Group 2"
 
 
 ##########################################################################################
