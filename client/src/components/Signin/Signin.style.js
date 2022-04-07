@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { NavLink as LinkRoute } from 'react-router-dom'
-import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   min-height: 692px;

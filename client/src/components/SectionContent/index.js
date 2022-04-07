@@ -11,10 +11,8 @@ import {
   Heading, 
   Subtitle, 
   BtnWrap, 
-  ImgWrap,
-  Img
+  ImgWrap
 } from './SectionContent.style'
-import GUI from '../GUI'
 import GUIProject from '../GUIProject';
 import GUIResource from '../GUIResource';
 

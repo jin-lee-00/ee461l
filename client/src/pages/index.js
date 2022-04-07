@@ -4,7 +4,6 @@ import Navbar from '../components/Navbar'
 import SectionHaaS from '../components/SectionHaaS'
 import SectionContent from '../components/SectionContent'
 import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from '../components/SectionContent/Content'
-import SectionCards from '../components/SectionCards'
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false)

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { NavLink as LinkRoute } from 'react-router-dom'
 
 const ProjectDashboard = ({ _id }) => {
   const [name, setName] = useState("")

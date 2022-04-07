@@ -2,10 +2,6 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages'
-import Projects from './pages/projects'
-import Resources from './pages/resources'
-import Datasets from './pages/datasets'
-import About from './pages/about'
 import SigninPage from './pages/signin';
 import ProjectsPage from './pages/projects';
 import ResourcesPage from './pages/resources';
