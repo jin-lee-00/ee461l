@@ -18,6 +18,10 @@ const ProjectDashboard = ({ _id }) => {
   const [desc, setDesc] = useState("")
   const [checkedOut, setCheckedOut] = useState({})
   const [resources, setResources] = useState({})
+
+  // Temp input qty storage
+  const [qty1, setQty1] = useState()
+  const [qty2, setQty2] = useState()
   
 
   useEffect(() => {
@@ -57,6 +61,28 @@ const ProjectDashboard = ({ _id }) => {
     return data
   }
 
+  // temp
+  const onCheckOut1 = async () => {
+    console.log("checkout: " + qty1)
+    const res = await fetch("http://localhost:5000/project/checkout/HWSet1/"+qty1)
+    const data = await res.json()
+    console.log(data)
+    console.log("checkout done")
+    return data
+  }
+
+  const onCheckOut2 = async () => {
+    console.log("checkout: " + qty2)
+  }
+
+  const onCheckIn1 = async () => {
+    console.log("checkin: " + qty1)
+  }
+  
+  const onCheckIn2 = async () => {
+    console.log("checkin: " + qty2)
+  }
+
   return (
     <Container>
       <Wrap>
@@ -81,10 +107,23 @@ const ProjectDashboard = ({ _id }) => {
               <>
                 {Object.entries(resources).map(([key, value]) => (
                   <div key={key}>
-                  <Label>{value.name}</Label>
-                    <Input type="number"/>
-                    <input type="button" value="check out" />
-                    <input type="button" value="check in" />
+                    <Label>{value.name}</Label>
+                    <Input required
+                      name={value._id}
+                      type="number"
+                      placeholder = "quantity"
+                      value={value.name === "HWSet1" ? qty1 : qty2}
+                      onChange={value.name === "HWSet1" ? 
+                        ((e) => setQty1(e.target.value)) :
+                        ((e) => setQty2(e.target.value))
+                      }
+                    />
+                    <input type="button" value="check out" 
+                      onClick={value.name === "HWSet1" ? onCheckOut1 : onCheckOut2}
+                    />
+                    <input type="button" value="check in" 
+                      onClick={value.name === "HWSet1" ? onCheckIn1 : onCheckIn2}
+                    />
                     <P>Available: {value.availability} </P>
                   </div>
                 ))}

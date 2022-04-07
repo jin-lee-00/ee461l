@@ -99,6 +99,17 @@ def getprojects():
   projects_json = dumps(projects_list)
   return projects_json
 
+# Temp
+@app.route('/project/checkout/HWSet1/<qty>')
+def checkOut1(qty):
+  print(qty)
+  resource_cursor = db_resources.find_one({"name":"HWSet1"})
+  resource_json = dumps(resource_cursor)
+  newQty = resource_cursor["availability"] - int(qty)
+  #db_resources.update_one
+  return resource_json
+  
+
 ## resources
 @app.route('/resource/add', methods=['POST'])
 def addresource():

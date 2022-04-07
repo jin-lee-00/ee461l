@@ -81,7 +81,7 @@ export const H1 = styled.h1`
 `
 export const H2 = styled.h2`
   margin-top: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 5px;
   color: #fff;
   font-size: 15px;
   font-weight: 100;
