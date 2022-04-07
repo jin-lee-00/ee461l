@@ -92,13 +92,12 @@ const GUIProject = () => {
   return (
     <GUIContainer primary='true'>
       <Header>
-        
-        <TopLine>Projects</TopLine>
-        <GUIButton 
-          onClick={onClick}
-        >
-          {showAddProject ? '-' : '+'}
-        </GUIButton>
+          <TopLine>Projects</TopLine>
+          <GUIButton 
+            onClick={onClick}
+          >
+            {showAddProject ? '-' : '+'}
+          </GUIButton>   
       </Header>
       {showAddProject && <AddProject onAdd={addProject}/>}
       {projects.length > 0 ? <Projects projects={projects} 

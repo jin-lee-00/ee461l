@@ -114,6 +114,19 @@ export const EntryHeader = styled.div`
   justify-content: space-between;
 `
 
+export const EntryIconsWrapper = styled.div`
+  display:flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const EntryIcon = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  //float: left;
+`
+
 export const EntryText = styled.p`
   color: #000000;
   display: flex;
