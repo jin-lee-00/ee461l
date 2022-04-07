@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import {
+  Container,
+  Wrap,
+  NavLink,
+  Content,
+  Form,
+  H1,
+  H2,
+  P,
+  Label,
+  Input
+} from './Project.style'
 
 const ProjectDashboard = ({ _id }) => {
   const [name, setName] = useState("")
@@ -28,17 +39,29 @@ const ProjectDashboard = ({ _id }) => {
   }
 
   return (
-    <>
-      <div>Project: {name}</div>
-      <div>ID: {_id}</div>
-      <div>Description: {desc}</div>
-      <>
-        {Object.entries(resources).map(([key, value]) =>(
-          <p key={key}>{key} : {value}</p>
-        ))}
-      </>
-      <NavLink to='/'>Back to Home</NavLink> 
-    </>
+    <Container>
+      <Wrap>
+        <NavLink to='/'>HaaS</NavLink> 
+        <Content>
+          <Form>
+            <H1>{name}</H1>
+            <H2>({_id})</H2>
+            <P>{desc}</P>
+            <>
+              {Object.entries(resources).map(([key, value]) =>(
+                <H2 key={key}>{key} : {value}</H2>
+              ))}
+            </>
+            <div>
+              <Label>HWSet1</Label>
+              <Input type="number"/>
+              <input type="button" value="check out" />
+              <input type="button" value="check in" />
+            </div>
+          </Form>
+        </Content>
+      </Wrap>     
+    </Container>
   )
 }
 
