@@ -68,6 +68,9 @@ export const Form = styled.div`
     padding: 32px 32px;
   }
 `
+export const FormSection = styled.div`
+  margin-bottom: 20px;
+`
 
 export const H1 = styled.h1`
   margin-bottom: 0px;
@@ -77,7 +80,8 @@ export const H1 = styled.h1`
   text-align: center;
 `
 export const H2 = styled.h2`
-  margin-bottom: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   color: #fff;
   font-size: 15px;
   font-weight: 100;
@@ -85,7 +89,7 @@ export const H2 = styled.h2`
 `
 
 export const P = styled.p`
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   color: #fff;
   font-size: 12px;
   font-weight: 1;
