@@ -45,7 +45,6 @@ const Navbar = ({ toggle }) => {
               spy={true} 
               exact='true'
               offset={-80}
-              activeStyle
             >
               Projects
             </NavLink>
@@ -55,7 +54,6 @@ const Navbar = ({ toggle }) => {
               spy={true} 
               exact='true'
               offset={-80}
-              activeStyle
             >
               Resources
             </NavLink>
@@ -65,7 +63,6 @@ const Navbar = ({ toggle }) => {
               spy={true} 
               exact='true'
               offset={-80}
-              activeStyle
             >
               Datasets
             </NavLink>
@@ -76,7 +73,6 @@ const Navbar = ({ toggle }) => {
               spy={true} 
               exact='true'
               offset={-80}
-              activeStyle
             >
               About
             </NavLink>

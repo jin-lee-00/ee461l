@@ -31,7 +31,6 @@ const SectionHaaS = () => {
             to='signup' 
             onMouseEnter={onHover} 
             onMouseLeave={onHover}
-            primary  
           >
             Sign Up {hover ? <ArrowForward /> : <ArrowRight />}
           </BtnLink>

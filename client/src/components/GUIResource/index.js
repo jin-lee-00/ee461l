@@ -58,7 +58,8 @@ const GUIResource = () => {
 
   const addResource = (resource) => {
     const _id = Math.floor(Math.random() * 10000) + 1
-    const newResource = { _id, ...resource}
+    const availability = resource.capacity
+    const newResource = { _id, ...resource, availability}
     fetch("http://localhost:5000/resource/add", {
       method: "POST",
       body: JSON.stringify({
@@ -96,47 +97,3 @@ const GUIResource = () => {
 }
 
 export default GUIResource
-
-/*
-export class GUI extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0,
-      primary: true
-    };
-  }
-
-  render() {
-    return (
-      <GUIContainer primary={this.state.primary}>
-        <TextWrapper>
-          <TopLine>Mock {this.props.topline} Display </TopLine>
-          <Heading primary={this.state.primary}
-            onClick={() =>
-              this.setState({ primary: !this.state.primary})}
-          >
-            {this.state.count}
-          </Heading>
-        </TextWrapper>
-        <ContentRow>
-          <Column1>
-            <GUIButton onClick={() =>
-              this.setState({ count: this.state.count + 1})}
-            >
-              +
-            </GUIButton>
-          </Column1>
-          <Column2>
-            <GUIButton onClick={() =>
-              this.setState({ count: this.state.count - 1})}
-            >
-              -
-            </GUIButton>
-          </Column2>
-        </ContentRow>
-      </GUIContainer>
-    );
-  }
-}
-*/
