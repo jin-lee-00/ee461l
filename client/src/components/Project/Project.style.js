@@ -89,7 +89,7 @@ export const H2 = styled.h2`
 `
 
 export const P = styled.p`
-  margin-bottom: 0px;
+  margin-bottom: 30px;
   color: #fff;
   font-size: 12px;
   font-weight: 1;
