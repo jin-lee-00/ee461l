@@ -72,6 +72,7 @@ const GUIProject = () => {
     .then(data => {
       console.log(data)
       setProjects(projects.filter((project) => project._id !== _id))
+      setDisplayedProjects(displayedProjects.filter((project) => project._id !== _id))
     })
   }
 
