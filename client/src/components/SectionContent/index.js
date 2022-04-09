@@ -53,7 +53,7 @@ const SectionContent = ({
                 <Heading lightText={lightText}>{headline}</Heading>
                 <Subtitle darkText={darkText}>{description}</Subtitle>
                 
-                
+{/*                
                 <BtnWrap>
                   <BtnLink to={route}
                     $primary={primary}
@@ -62,6 +62,7 @@ const SectionContent = ({
                     {buttonLabel}
                   </BtnLink>
                 </BtnWrap>
+*/}
               </TextWrapper>
 
             </Column1>

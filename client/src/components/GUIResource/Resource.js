@@ -12,6 +12,7 @@ const Resource = ({ resource, onManage, onDelete }) => {
     <EntryWrapper>
       <EntryHeader>
         <h3>{resource.name}</h3>
+{/*}
         <GUIButton primary='true'
           onClick={() => onManage(resource._id)}
         >
@@ -20,6 +21,7 @@ const Resource = ({ resource, onManage, onDelete }) => {
         <FaTimes 
           onClick={() => onDelete(resource._id)}
         />
+*/}
       </EntryHeader>
       <EntryText>
         Capacity: {resource.capacity} 
