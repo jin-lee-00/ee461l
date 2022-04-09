@@ -100,6 +100,7 @@ const GUIProject = () => {
       console.log(data)
     })
     setProjects([...projects, newProject])
+    setDisplayedProjects([newProject])
   }
 
   return (
