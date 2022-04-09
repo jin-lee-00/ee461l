@@ -22,6 +22,8 @@ const GUIProject = () => {
 
   const [showAddProject, setShowAddProject] = useState(false)
   const [projects, setProjects] = useState([])
+  const [displayedProjects, setDisplayedProjects] = useState([])
+  const [searchID, setSearchID] = useState('')
 
   useEffect(() => {
     const getProjects = async () => {
@@ -46,6 +48,13 @@ const GUIProject = () => {
 
   const manageProject = (_id) => {
     routeChange(_id)
+  }
+
+  const searchProject = (e) => {
+    e.preventDefault()
+    console.log("search for: " + searchID)
+    setDisplayedProjects(projects.filter((project) => project._id === parseInt(searchID)))
+    console.log(displayedProjects)
   }
 
   const deleteProject = (_id) => {
@@ -105,20 +114,23 @@ const GUIProject = () => {
       </Header>
       {showAddProject && <AddProject onAdd={addProject}/>}
 
-      <EntryForm>
+      <EntryForm onSubmit={searchProject}>
         <FormContainer>
           <FormInput required
-            type='text' 
+            type='number' 
             placeholder='Project ID'
+            value={searchID}
+            onChange={(e) => setSearchID(e.target.value)}
           />
 
         </FormContainer>
         <FormBtn type='submit' value='Search Project'/>
       </EntryForm>
 
-      {projects.length > 0 ? <Projects projects={projects} 
+      {projects.length > 0 ? <Projects projects={displayedProjects} 
         onManage={manageProject}
         onDelete={deleteProject}
+        onSearch={searchProject}
       /> : 'No Projects'}
     </GUIContainer>
   )
