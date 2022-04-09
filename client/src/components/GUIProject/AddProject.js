@@ -31,7 +31,7 @@ const AddProject = ({ onAdd }) => {
         <FormLabel>Name</FormLabel>
         <FormInput required
           type='text' 
-          placeholder='Project name'
+          placeholder='Project Name'
           value={name}
           onChange={(e) => setName(e.target.value)}
         />

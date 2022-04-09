@@ -55,7 +55,7 @@ def signin():
   user = db_users.find({},{ "email": email})
   # Check user is in db_users
   # if (user != None):
-    # TODO: Authenticate (jwt?)
+    # TODO: Authenticate (jwt, session(s) from flask)
 
   return request_data
 

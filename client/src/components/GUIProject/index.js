@@ -4,7 +4,11 @@ import {
   GUIContainer,
   Header,
   TopLine,
-  GUIButton
+  GUIButton,
+  EntryForm,
+  FormContainer,
+  FormInput,
+  FormBtn
 } from './GUI.style';
 import AddProject from "./AddProject";
 import { useNavigate } from "react-router-dom";
@@ -92,14 +96,26 @@ const GUIProject = () => {
   return (
     <GUIContainer primary='true'>
       <Header>
-          <TopLine>Projects</TopLine>
-          <GUIButton 
-            onClick={onClick}
-          >
-            {showAddProject ? '-' : '+'}
-          </GUIButton>   
+        <TopLine>Projects</TopLine>
+        <GUIButton 
+          onClick={onClick}
+        >
+          {showAddProject ? '-' : '+'}
+        </GUIButton>   
       </Header>
       {showAddProject && <AddProject onAdd={addProject}/>}
+
+      <EntryForm>
+        <FormContainer>
+          <FormInput required
+            type='text' 
+            placeholder='Project ID'
+          />
+
+        </FormContainer>
+        <FormBtn type='submit' value='Search Project'/>
+      </EntryForm>
+
       {projects.length > 0 ? <Projects projects={projects} 
         onManage={manageProject}
         onDelete={deleteProject}
