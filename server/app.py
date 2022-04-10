@@ -1,3 +1,4 @@
+from hashlib import new
 from flask import Flask, jsonify, request, json, redirect
 from flask_cors import CORS
 import pymongo
@@ -100,14 +101,29 @@ def getprojects():
   return projects_json
 
 # Temp
-@app.route('/project/checkout/HWSet1/<qty>')
-def checkOut1(qty):
-  print(qty)
-  resource_cursor = db_resources.find_one({"name":"HWSet1"})
-  resource_json = dumps(resource_cursor)
-  newQty = resource_cursor["availability"] - int(qty)
-  #db_resources.update_one
-  return resource_json
+@app.route('/project/checkout/<resource_name>/<qty>')
+def checkOut1(resource_name, qty):
+  print(resource_name,qty)
+  resource_cursor = db_resources.find_one({"name":resource_name})
+  if(resource_cursor["availability"] >= int(qty)):
+    query = {"name":resource_name}
+    newQty = resource_cursor["availability"] - int(qty)
+    updated_availability = {"$set": {"availability": newQty}}
+
+    db_resources.update_one(query, updated_availability)
+  
+    resource_json = dumps(db_resources.find_one({"name":resource_name}))
+    return resource_json, 200
+  else: # availability < qty
+    query = {"name":resource_name}
+    newQty = 0
+    updated_availability = {"$set": {"availability": newQty}}
+
+    db_resources.update_one(query, updated_availability)
+  
+    resource_json = dumps(db_resources.find_one({"name":resource_name}))
+    return resource_json, 400 # return error
+
   
 
 ## resources

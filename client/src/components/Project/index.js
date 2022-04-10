@@ -18,12 +18,8 @@ const ProjectDashboard = ({ _id }) => {
   const [desc, setDesc] = useState("")
   const [checkedOut, setCheckedOut] = useState({})
   const [resources, setResources] = useState({})
-
-  // Temp input qty storage
-  const [qty1, setQty1] = useState()
-  const [qty2, setQty2] = useState()
+  const [qty, setQty] = useState({HWSet1: "", HWSet2: ""})
   
-
   useEffect(() => {
     const getProject = async () => {
       const projectFromServer = await fetchProject()
@@ -61,26 +57,33 @@ const ProjectDashboard = ({ _id }) => {
     return data
   }
 
-  // temp
-  const onCheckOut1 = async () => {
-    console.log("checkout: " + qty1)
-    const res = await fetch("http://localhost:5000/project/checkout/HWSet1/"+qty1)
+  const handleQtyChange = (e) => {
+    const { name, value } = e.target
+    setQty(qty => ({
+      ...qty,
+      [name]: value
+    }))
+  }
+
+  const handleCheckOut = async (e) => {
+    const {name} = e.target
+    console.log("checkout: " + qty[name] + " of " + name)
+    const res = await fetch("http://localhost:5000/project/checkout/"+name+"/"+qty[name])
+    // error handling
+    if(res.status === 400) {
+      alert("400: quantity > availability")
+    }
+
     const data = await res.json()
     console.log(data)
     console.log("checkout done")
+    setResources(await fetchResources())
     return data
   }
 
-  const onCheckOut2 = async () => {
-    console.log("checkout: " + qty2)
-  }
-
-  const onCheckIn1 = async () => {
-    console.log("checkin: " + qty1)
-  }
-  
-  const onCheckIn2 = async () => {
-    console.log("checkin: " + qty2)
+  const handleCheckIn = async (e) => {
+    const {name} = e.target
+    console.log("checkin: " + qty[name] + " of " + name)
   }
 
   return (
@@ -105,26 +108,27 @@ const ProjectDashboard = ({ _id }) => {
             <FormSection>
               <H2>Manage Resources</H2>
               <>
-                {Object.entries(resources).map(([key, value]) => (
+                {Object.entries(resources).map(([key, resource]) => (
                   <div key={key}>
-                    <Label>{value.name}</Label>
+                    <Label>{resource.name}</Label>
                     <Input required
-                      name={value._id}
+                      name={resource.name}
                       type="number"
                       placeholder = "quantity"
-                      value={value.name === "HWSet1" ? qty1 : qty2}
-                      onChange={value.name === "HWSet1" ? 
-                        ((e) => setQty1(e.target.value)) :
-                        ((e) => setQty2(e.target.value))
-                      }
+                      value={qty[resource.name]}
+                      onChange={handleQtyChange}
                     />
-                    <input type="button" value="check out" 
-                      onClick={value.name === "HWSet1" ? onCheckOut1 : onCheckOut2}
+                    <input type="button" 
+                      name={resource.name}
+                      value="check out" 
+                      onClick={handleCheckOut}
                     />
-                    <input type="button" value="check in" 
-                      onClick={value.name === "HWSet1" ? onCheckIn1 : onCheckIn2}
+                    <input type="button" 
+                      name={resource.name}
+                      value="check in" 
+                      onClick={handleCheckIn}
                     />
-                    <P>Available: {value.availability} </P>
+                    <P>Available: {resource.availability} </P>
                   </div>
                 ))}
               </>
