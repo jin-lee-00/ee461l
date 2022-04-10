@@ -11,11 +11,13 @@ import {
   FormButton,
   Text 
 } from './Signin.style'
+import { useNavigate } from "react-router-dom";
+
 
 const SignIn = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  
+  const navigate = useNavigate();
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
   }
@@ -38,6 +40,7 @@ const SignIn = () => {
     .then(response => response.json())
     .then(data => {
           if (data.status == 200) {
+            navigate("/")
             console.log(data)
             setEmail("")
             setPassword("")

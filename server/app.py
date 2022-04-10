@@ -77,7 +77,6 @@ def signin():
     else:
       response["status"] = 401
       return response
-
   else:
     response["status"] = 400
     return response
