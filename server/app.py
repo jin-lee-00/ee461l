@@ -39,15 +39,19 @@ def signup():
   password = request_data['password']
   user = db_users.find({},{ "email": email})
   # Check user is not in db_users
-  # if user == None:
+  email_cursor = db_users.find_one({"email": email})
+  if email_cursor == None:
   # Add user to db_users
-  db_users.insert_one(
-      { "name": name,
-        "email": email,
-        "password": password,
-      }
-  )
-  return request_data
+    db_users.insert_one(
+        { "name": name,
+          "email": email,
+          "password": password,
+        }
+    )
+    return request_data
+  else:
+    #todo: output error
+    return request_data
 
 @app.route('/user/signin', methods=["POST"])
 def signin():
@@ -55,10 +59,13 @@ def signin():
   email = request_data['email']
   user = db_users.find({},{ "email": email})
   # Check user is in db_users
-  # if (user != None):
+  email_cursor = db_users.find_one({"email": email})
+  if email_cursor != None:
     # TODO: Authenticate (jwt, session(s) from flask)
-
-  return request_data
+    return request_data
+  #todo: output error
+  else:
+    return request_data
 
 ## projects
 @app.route('/project/add', methods=['POST'])
