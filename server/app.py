@@ -101,25 +101,36 @@ def getprojects():
   return projects_json
 
 # Temp
-@app.route('/project/checkout/<resource_name>/<qty>')
-def checkOut1(resource_name, qty):
+@app.route('/project/<_id>/checkout/<resource_name>/<qty>')
+def checkOut1(_id, resource_name, qty):
   print(resource_name,qty)
   resource_cursor = db_resources.find_one({"name":resource_name})
+  resource_query = {"name":resource_name}
+  project_cursor = db_projects.find_one({"_id":int(_id)})
+  current_checkedOutQty = project_cursor["resources"][resource_name]
+  project_query = {"_id":int(_id)}
+  
   if(resource_cursor["availability"] >= int(qty)):
-    query = {"name":resource_name}
     newQty = resource_cursor["availability"] - int(qty)
     updated_availability = {"$set": {"availability": newQty}}
+    updated_checkedOutQty = current_checkedOutQty + int(qty)
+    print("updated checkout qty:",updated_checkedOutQty)
+    #updated_checkedOut = [{"$set": {"resources": {resource_name: updated_checkedOutQty}}}]
 
-    db_resources.update_one(query, updated_availability)
+    db_projects.update_one(project_query, [{"$set": {"resources": {resource_name: updated_checkedOutQty}}}])
+    db_resources.update_one(resource_query, updated_availability)
   
     resource_json = dumps(db_resources.find_one({"name":resource_name}))
     return resource_json, 200
   else: # availability < qty
-    query = {"name":resource_name}
     newQty = 0
+    updated_checkedOutQty = current_checkedOutQty + resource_cursor["availability"]
     updated_availability = {"$set": {"availability": newQty}}
+    print("updated checkout qty:",updated_checkedOutQty)
+    #updated_checkedOut = [{"$set": {"resources": {resource_name: updated_checkedOutQty}}}]
 
-    db_resources.update_one(query, updated_availability)
+    db_projects.update_one(project_query, [{"$set": {"resources": {resource_name: updated_checkedOutQty}}}])
+    db_resources.update_one(resource_query, updated_availability)
   
     resource_json = dumps(db_resources.find_one({"name":resource_name}))
     return resource_json, 400 # return error

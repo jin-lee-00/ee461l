@@ -16,7 +16,7 @@ import {
 const ProjectDashboard = ({ _id }) => {
   const [name, setName] = useState("")
   const [desc, setDesc] = useState("")
-  const [checkedOut, setCheckedOut] = useState({})
+  const [checkedOut, setCheckedOut] = useState({HWSet1: "", HWSet2: ""})
   const [resources, setResources] = useState({})
   const [qty, setQty] = useState({HWSet1: "", HWSet2: ""})
   
@@ -65,19 +65,25 @@ const ProjectDashboard = ({ _id }) => {
     }))
   }
 
+
   const handleCheckOut = async (e) => {
     const {name} = e.target
     console.log("checkout: " + qty[name] + " of " + name)
-    const res = await fetch("http://localhost:5000/project/checkout/"+name+"/"+qty[name])
-    // error handling
+    const res = await fetch("http://localhost:5000/project/"+_id+"/checkout/"+name+"/"+qty[name])
+    // update checkedOut, error handling
     if(res.status === 400) {
       alert("400: quantity > availability")
+    } else {// success
+      console.log(name, qty)
     }
+
+    
 
     const data = await res.json()
     console.log(data)
     console.log("checkout done")
     setResources(await fetchResources())
+    setCheckedOut((await fetchProject())["resources"])
     return data
   }
 
