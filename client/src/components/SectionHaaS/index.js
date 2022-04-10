@@ -10,6 +10,7 @@ import {
   ArrowRight 
 } from './SectionHaaS.style'
 import { BtnLink } from '../Button.style'
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
 const SectionHaaS = () => {
   const [hover, setHover] = useState(false)
@@ -20,8 +21,16 @@ const SectionHaaS = () => {
 
   return (
     <HaasContainer id='home'>
-      <HaasBg></HaasBg>
+      {/* <HaasBg></HaasBg> */}
       <HaasContent>
+      <Player
+        autoplay
+        loop
+        src="https://assets5.lottiefiles.com/packages/lf20_wepuwkno.json"
+        className='lottie-hero'
+      >
+        {/* <Controls visible={true} buttons={['play', 'repeat', 'frame', 'debug']} /> */}
+      </Player>
         <HaasH1>EE 461L Group 2</HaasH1>
         <HaasP>
         Jin Lee, Brandi Nguyen, Allen Zhou, Carson Bone, Noah Zamarripa  
