@@ -90,6 +90,22 @@ const ProjectDashboard = ({ _id }) => {
   const handleCheckIn = async (e) => {
     const {name} = e.target
     console.log("checkin: " + qty[name] + " of " + name)
+    const res = await fetch("http://localhost:5000/project/"+_id+"/checkin/"+name+"/"+qty[name])
+    // update checkedOut, error handling
+    if(res.status === 400) {
+      alert("400: quantity > availability")
+    } else {// success
+      console.log(name, qty)
+    }
+
+    
+
+    const data = await res.json()
+    console.log(data)
+    console.log("checkin done")
+    setResources(await fetchResources())
+    setCheckedOut((await fetchProject())["resources"])
+    return data
   }
 
   return (

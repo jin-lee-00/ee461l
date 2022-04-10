@@ -100,9 +100,9 @@ def getprojects():
   projects_json = dumps(projects_list)
   return projects_json
 
-# Temp
+# Manage resources
 @app.route('/project/<_id>/checkout/<resource_name>/<qty>')
-def checkOut1(_id, resource_name, qty):
+def checkOut(_id, resource_name, qty):
   print(resource_name,qty)
   resource_cursor = db_resources.find_one({"name":resource_name})
   resource_query = {"name":resource_name}
@@ -135,6 +135,39 @@ def checkOut1(_id, resource_name, qty):
     resource_json = dumps(db_resources.find_one({"name":resource_name}))
     return resource_json, 400 # return error
 
+@app.route('/project/<_id>/checkin/<resource_name>/<qty>')
+def checkIn(_id, resource_name, qty):
+  print(resource_name,qty)
+  resource_cursor = db_resources.find_one({"name":resource_name})
+  resource_query = {"name":resource_name}
+  project_cursor = db_projects.find_one({"_id":int(_id)})
+  current_checkedOutQty = project_cursor["resources"][resource_name]
+  project_query = {"_id":int(_id)}
+  
+  if(current_checkedOutQty >= int(qty)):
+    newQty = resource_cursor["availability"] + int(qty)
+    updated_availability = {"$set": {"availability": newQty}}
+    updated_checkedOutQty = current_checkedOutQty - int(qty)
+    print("updated checkout qty:",updated_checkedOutQty)
+    #updated_checkedOut = [{"$set": {"resources": {resource_name: updated_checkedOutQty}}}]
+
+    db_projects.update_one(project_query, [{"$set": {"resources": {resource_name: updated_checkedOutQty}}}])
+    db_resources.update_one(resource_query, updated_availability)
+  
+    resource_json = dumps(db_resources.find_one({"name":resource_name}))
+    return resource_json, 200
+  else: # checkedOut < qty
+    newQty = current_checkedOutQty + resource_cursor["availability"]
+    updated_checkedOutQty = 0
+    updated_availability = {"$set": {"availability": newQty}}
+    print("updated checkout qty:",updated_checkedOutQty)
+    #updated_checkedOut = [{"$set": {"resources": {resource_name: updated_checkedOutQty}}}]
+
+    db_projects.update_one(project_query, [{"$set": {"resources": {resource_name: updated_checkedOutQty}}}])
+    db_resources.update_one(resource_query, updated_availability)
+  
+    resource_json = dumps(db_resources.find_one({"name":resource_name}))
+    return resource_json, 400 # return error
   
 
 ## resources
