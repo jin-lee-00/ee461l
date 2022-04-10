@@ -42,10 +42,17 @@ const SignUp = () => {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
-      setName("")
-      setEmail("")
-      setPassword("")
+      //within response there should be a key value pair for the status code status:200/400/500
+      if (data.status == 200) {
+        console.log(data)
+        setName("")
+        setEmail("")
+        setPassword("")
+      }
+      else if (data.status == 400) {
+        console.log(data)
+        alert('User already exists, sign in instead')
+      }
     }
     )
   }

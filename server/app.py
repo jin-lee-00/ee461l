@@ -34,11 +34,12 @@ db_projects = data.projects
 @app.route('/user/signup', methods=["GET", "POST"])
 def signup():
   request_data = json.loads(request.data)
+  response = request_data
   email = request_data['email']
   name = request_data['name']
   password = request_data['password']
   user = db_users.find({},{ "email": email})
-  # Check user is not in db_users
+  # Check user is not in db_users (user does not exist)
   email_cursor = db_users.find_one({"email": email})
   if email_cursor == None:
   # Add user to db_users
@@ -48,10 +49,14 @@ def signup():
           "password": password,
         }
     )
-    return request_data
+    # append the status to
+    response["status"] = 200
+    return response
   else:
+    # user already exists
     #todo: output error
-    return request_data
+    response["status"] = 400
+    return response
 
 @app.route('/user/signin', methods=["POST"])
 def signin():
