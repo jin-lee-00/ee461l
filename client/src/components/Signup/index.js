@@ -11,11 +11,13 @@ import {
   FormButton,
   Text 
 } from './Signup.style'
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const navigate = useNavigate()
 
   const handleNameChange = (e) => {
     setName(e.target.value)
@@ -42,12 +44,12 @@ const SignUp = () => {
     })
     .then(response => response.json())
     .then(data => {
-      //within response there should be a key value pair for the status code status:200/400/500
       if (data.status == 200) {
         console.log(data)
         setName("")
         setEmail("")
         setPassword("")
+        navigate("/")
       }
       else if (data.status == 400) {
         console.log(data)
