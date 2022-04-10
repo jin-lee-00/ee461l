@@ -44,6 +44,9 @@ const SignIn = () => {
           } else if (data.status == 400) {
             console.log(data)
             alert('User does not exist, sign up instead')
+          } else if (data.status == 401) {
+            console.log(data)
+            alert('Password does not match')
           }
         }
     )

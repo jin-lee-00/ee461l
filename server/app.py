@@ -70,13 +70,14 @@ def signin():
   email_cursor = db_users.find_one({"email": email})
   if email_cursor != None:
     # TODO: Authenticate (jwt, session(s) from flask)
-
     # check if passwords match
-    # if pbkdf2_sha256.verify(password, user["password"]):
+    if pbkdf2_sha256.verify(password, email_cursor["password"]):
+      response["status"] = 200
+      return response
+    else:
+      response["status"] = 401
+      return response
 
-    response["status"] = 200
-    return response
-  #todo: output error
   else:
     response["status"] = 400
     return response
