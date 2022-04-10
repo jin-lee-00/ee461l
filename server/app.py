@@ -6,9 +6,17 @@ from bson.json_util import dumps
 from flask.helpers import send_from_directory
 import os
 from passlib.hash import pbkdf2_sha256
+
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import JWTManager
+
 # from user.models import User
 
 app = Flask(__name__)
+app.config["JWT_SECRET_KEY"] = "super-duper-secret"
+jwt = JWTManager(app)
 # app = Flask(__name__, , static_folder='./build', static_url_path='/')
 CORS(app)
 app.secret_key = "temp_secret_key"
@@ -80,6 +88,23 @@ def signin():
   else:
     response["status"] = 400
     return response
+
+
+#token stuff
+@app.route("/token", methods=["POST"])
+def tokencreate():
+    request_data = json.loads(request.data)
+    email = request_data['email']
+    access_token = create_access_token(identity=email)
+    return jsonify(access_token=access_token)
+
+@app.route("/protected", methods=["POST"])
+@jwt_required()
+def protected():
+    #identity=email
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200
+
 
 ## projects
 @app.route('/project/add', methods=['POST'])
