@@ -61,16 +61,19 @@ def signup():
 @app.route('/user/signin', methods=["POST"])
 def signin():
   request_data = json.loads(request.data)
+  response = request_data
   email = request_data['email']
   user = db_users.find({},{ "email": email})
   # Check user is in db_users
   email_cursor = db_users.find_one({"email": email})
   if email_cursor != None:
     # TODO: Authenticate (jwt, session(s) from flask)
-    return request_data
+    response["status"] = 200
+    return response
   #todo: output error
   else:
-    return request_data
+    response["status"] = 400
+    return response
 
 ## projects
 @app.route('/project/add', methods=['POST'])

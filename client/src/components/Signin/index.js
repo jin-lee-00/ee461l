@@ -37,10 +37,15 @@ const SignIn = () => {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
-      setEmail("")
-      setPassword("")
-    }
+          if (data.status == 200) {
+            console.log(data)
+            setEmail("")
+            setPassword("")
+          } else if (data.status == 400) {
+            console.log(data)
+            alert('User does not exist, sign up instead')
+          }
+        }
     )
   }
 
