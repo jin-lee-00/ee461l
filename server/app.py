@@ -5,6 +5,7 @@ import pymongo
 from bson.json_util import dumps
 from flask.helpers import send_from_directory
 import os
+from passlib.hash import pbkdf2_sha256
 # from user.models import User
 
 app = Flask(__name__)
@@ -46,7 +47,7 @@ def signup():
     db_users.insert_one(
         { "name": name,
           "email": email,
-          "password": password,
+          "password": pbkdf2_sha256.hash(password),
         }
     )
     # append the status to
@@ -63,11 +64,16 @@ def signin():
   request_data = json.loads(request.data)
   response = request_data
   email = request_data['email']
+  password = request_data['password']
   user = db_users.find({},{ "email": email})
   # Check user is in db_users
   email_cursor = db_users.find_one({"email": email})
   if email_cursor != None:
     # TODO: Authenticate (jwt, session(s) from flask)
+
+    # check if passwords match
+    # if pbkdf2_sha256.verify(password, user["password"]):
+
     response["status"] = 200
     return response
   #todo: output error
