@@ -46,10 +46,33 @@ const SignUp = () => {
     .then(data => {
       if (data.status == 200) {
         console.log(data)
-        setName("")
-        setEmail("")
-        setPassword("")
-        navigate("/")
+          fetch("http://localhost:5000/token", {
+              method: "POST",
+              body: JSON.stringify({
+                  email: email
+              }),
+              headers: {
+                  "Content-type": "application/json"
+              }
+          })
+              .then(tokendata => {
+                  console.log(tokendata)
+                  if (tokendata.status == 200) return tokendata.json();
+                  else alert("Token fetch error");
+              })
+              .then(tokendata => {
+                  sessionStorage.setItem("token", tokendata.token)
+              })
+              .catch(error => {
+                  console.error("Storing token error", error);
+              })
+
+          setName("")
+          setEmail("")
+          setPassword("")
+          navigate("/")
+
+          
       }
       else if (data.status == 400) {
         console.log(data)
