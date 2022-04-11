@@ -154,6 +154,17 @@ const ProjectDashboard = ({ _id }) => {
                   </div>
                 ))}
               </>
+              <FormSection>
+              <H2>Users</H2>
+              <P> TODO: place joined users here
+                < br/>
+                < br/>
+                <input type = "button"
+                value = "join project"
+              // TODO: onClick={handleJoinProject}
+              />
+              </P>
+            </FormSection>
             </FormSection>
           </Form>
         </Content>
