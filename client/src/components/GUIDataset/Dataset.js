@@ -2,6 +2,8 @@ import React from 'react'
 //import { FaTimes } from 'react-icons/fa'
 import { 
   EntryHeader, 
+  EntryH3,
+  EntryHref,
   EntryText, 
   EntryWrapper, 
   GUIButton
@@ -11,7 +13,11 @@ const Dataset = ({ dataset, onManage, onDelete }) => {
   return (
     <EntryWrapper>
       <EntryHeader>
-        <h3>{dataset.name}</h3>
+        <EntryH3>
+          <EntryHref href={dataset.url} target="_blank">
+            {dataset.name}
+          </EntryHref>
+        </EntryH3>
         <GUIButton primary='true'
           onClick={() => onManage(dataset._id)}
         >
@@ -24,7 +30,6 @@ const Dataset = ({ dataset, onManage, onDelete }) => {
 */}   
       </EntryHeader>
       <EntryText>
-        {dataset._id}
       </EntryText>
     </EntryWrapper>
   )

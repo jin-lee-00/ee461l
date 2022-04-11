@@ -9,7 +9,7 @@ import {
 import AddDataset from "./AddDataset";
 
 const GUIDataset = () => {
-  const [showAddDataset, setShowAddDataset] = useState(false)
+  //const [showAddDataset, setShowAddDataset] = useState(false)
   const [datasets, setDatasets] = useState([])
 
   useEffect(() => {
@@ -23,15 +23,17 @@ const GUIDataset = () => {
   }, [])
 
   const fetchDatasets = async () => {
-    const res = await fetch("http://localhost:5000/project/getall")
+    const res = await fetch("http://localhost:5000/dataset/getall")
     const data = await res.json()
     console.log(data)
     return data
   }
 
+{/*
   const onClick =() => {
     setShowAddDataset(!showAddDataset)
   }
+*/}
 
   const manageDataset = (name) => {
     alert("manage dataset " + name)
@@ -55,7 +57,7 @@ const GUIDataset = () => {
     })
   }
 
-
+{/*
   const addDataset = (dataset) => {
     const _id = Math.floor(Math.random() * 10000) + 1
     const newDataset = { _id, ...dataset}
@@ -76,20 +78,23 @@ const GUIDataset = () => {
     })
     setDatasets([...datasets, newDataset])
   }
+*/}
 
   return (
     <GUIContainer primary='true'>
       <Header>
         
         <TopLine>Datasets</TopLine>
+{/*
         <GUIButton 
           onClick={onClick}
           primary={showAddDataset}
         >
           {showAddDataset ? '-' : '+'}
         </GUIButton>
+*/}      
       </Header>
-      {showAddDataset && <AddDataset onAdd={addDataset}/>}
+      {/*showAddDataset && <AddDataset onAdd={addDataset}/>*/}
       {datasets.length > 0 ? <Datasets datasets={datasets} 
         onManage={manageDataset}
         onDelete={deleteDataset}

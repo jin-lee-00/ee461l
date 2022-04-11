@@ -316,7 +316,12 @@ def getresources():
   return resources_json
 
 ## datasets
-@app.route('/dataset/')
+@app.route('/dataset/getall')
+def getdatasets():
+  datasets_cursor = db_datasets.find()
+  datasets_list = list(datasets_cursor)
+  datasets_json = dumps(datasets_list)
+  return datasets_json
 
 
 @app.route("/")

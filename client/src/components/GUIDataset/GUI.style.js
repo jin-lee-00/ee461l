@@ -113,6 +113,13 @@ export const EntryHeader = styled.div`
   align-items: center;
   justify-content: space-between;
 `
+export const EntryH3 = styled.h3`
+  margin-left: 5px;
+`
+
+export const EntryHref = styled.a`
+  color: #000000;
+`
 
 export const EntryText = styled.p`
   color: #000000;
