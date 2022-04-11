@@ -65,7 +65,12 @@ data = client.data
 db_users = data.users
 db_resources = data.resources
 db_projects = data.projects
+db_datasets = data.datasets
 
+if(db_datasets.count_documents({}) == 0):
+  db_datasets.insert_many(_datasets)
+else:
+  print(db_datasets.count_documents({}))
 ##########################################################################################
 # API
 ##########################################################################################
