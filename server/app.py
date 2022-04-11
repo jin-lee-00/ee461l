@@ -158,12 +158,15 @@ def signin():
 
 
 #token stuff
-@app.route("/token", methods=["POST"])
+@app.route("/token", methods=[ "POST"])
 def tokencreate():
     request_data = json.loads(request.data)
     email = request_data['email']
     access_token = create_access_token(identity=email)
-    return jsonify(access_token=access_token)
+    response = request_data
+    response["token"] = access_token
+    response["status"] = 200
+    return response
 
 @app.route("/protected", methods=["POST"])
 @jwt_required()
@@ -175,6 +178,7 @@ def protected():
 
 ## projects
 @app.route('/project/add', methods=['POST'])
+@jwt_required()
 def addproject():
   request_data = json.loads(request.data)
   _id = request_data["_id"]
@@ -185,7 +189,8 @@ def addproject():
     "_id": _id,
     "name": name,
     "desc": desc,
-    "resources": resources
+    "resources": resources,
+    "users": [jsonify(get_jwt_identity())]
   })
   return request_data
 
