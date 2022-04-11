@@ -9,7 +9,7 @@ import {
   GUIButton
 } from './GUI.style'
 
-const Dataset = ({ dataset, onManage, onDelete }) => {
+const Dataset = ({ dataset, onDownload, onDelete }) => {
   return (
     <EntryWrapper>
       <EntryHeader>
@@ -19,7 +19,7 @@ const Dataset = ({ dataset, onManage, onDelete }) => {
           </EntryHref>
         </EntryH3>
         <GUIButton primary='true'
-          onClick={() => onManage(dataset._id)}
+          onClick={() => onDownload(dataset.zip_url)}
         >
           Download
         </GUIButton>

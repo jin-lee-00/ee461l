@@ -7,10 +7,12 @@ import {
   GUIButton
 } from './GUI.style';
 import AddDataset from "./AddDataset";
+import { useNavigate } from "react-router-dom";
 
 const GUIDataset = () => {
   //const [showAddDataset, setShowAddDataset] = useState(false)
   const [datasets, setDatasets] = useState([])
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getDatasets = async () => {
@@ -35,8 +37,8 @@ const GUIDataset = () => {
   }
 */}
 
-  const manageDataset = (name) => {
-    alert("manage dataset " + name)
+  const downloadDataset = (zip_url) => {
+    window.open(zip_url, "_blank")
   }
 
   const deleteDataset = (_id) => {
@@ -96,7 +98,7 @@ const GUIDataset = () => {
       </Header>
       {/*showAddDataset && <AddDataset onAdd={addDataset}/>*/}
       {datasets.length > 0 ? <Datasets datasets={datasets} 
-        onManage={manageDataset}
+        onDownload={downloadDataset}
         onDelete={deleteDataset}
       /> : 'No Datasets'}
     </GUIContainer>
