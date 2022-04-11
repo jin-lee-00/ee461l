@@ -24,7 +24,38 @@ app.secret_key = "temp_secret_key"
 ##########################################################################################
 # DATABASE
 ##########################################################################################
-
+_datasets = [
+  {# 14.6 MB
+    "_id": 0,
+    "name": "Abdominal and Direct Fetal ECG Database",
+    "url": "https://physionet.org/content/adfecgdb/1.0.0/",
+    "zip_url": "https://physionet.org/static/published-projects/adfecgdb/abdominal-and-direct-fetal-ecg-database-1.0.0.zip"
+  },
+  {# 2.4 MB
+    "_id": 1,
+    "name": "AF Termination Challenge Database",
+    "url": "https://physionet.org/content/aftdb/1.0.0/",
+    "zip_url": "https://physionet.org/static/published-projects/aftdb/af-termination-challenge-database-1.0.0.zip"
+  },
+  {# 9.2 MB
+    "_id": 2,
+    "name": "AHA Database Sample Excluded Record",
+    "url": "https://physionet.org/content/ahadb/1.0.0/",
+    "zip_url": "https://physionet.org/static/published-projects/ahadb/aha-database-sample-excluded-record-1.0.0.zip"
+  },
+  {# 1.1 MB
+    "_id": 3,
+    "name": "ANSI/AAMI EC13 Test Waveforms",
+    "url": "https://physionet.org/content/aami-ec13/1.0.0/",
+    "zip_url": "https://physionet.org/static/published-projects/aami-ec13/ansiaami-ec13-test-waveforms-1.0.0.zip"
+  },
+  {
+    "_id": 4,
+    "name": "Blood Pressure in Salt-Sensitive Dahl Rats",
+    "url": "https://physionet.org/content/bpssrat/1.0.0/",
+    "zip_url": "https://physionet.org/static/published-projects/bpssrat/blood-pressure-in-salt-sensitive-dahl-rats-1.0.0.zip"
+  },
+]
 ## connect to mongoDb client cluster0
 client = pymongo.MongoClient("localhost", 27017) # local db for development
 
@@ -247,6 +278,10 @@ def getresources():
   resources_list = list(resources_cursor)
   resources_json = dumps(resources_list)
   return resources_json
+
+## datasets
+@app.route('/dataset/')
+
 
 @app.route("/")
 def home():

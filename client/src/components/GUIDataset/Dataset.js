@@ -1,6 +1,5 @@
 import React from 'react'
-import { FaTimes } from 'react-icons/fa'
-import { BtnLink } from '../Button.style'
+//import { FaTimes } from 'react-icons/fa'
 import { 
   EntryHeader, 
   EntryText, 
@@ -8,25 +7,27 @@ import {
   GUIButton
 } from './GUI.style'
 
-const Entry = ({ entry, onManage, onDelete }) => {
+const Dataset = ({ dataset, onManage, onDelete }) => {
   return (
     <EntryWrapper>
       <EntryHeader>
-        <h3>{entry.name}</h3>
+        <h3>{dataset.name}</h3>
         <GUIButton primary='true'
-          onClick={() => onManage(entry._id)}
+          onClick={() => onManage(dataset._id)}
         >
-          Manage
+          Download
         </GUIButton>
+{/*
         <FaTimes 
-          onClick={() => onDelete(entry._id)}
+          onClick={() => onDelete(dataset._id)}
         />
+*/}   
       </EntryHeader>
       <EntryText>
-        {entry._id}
+        {dataset._id}
       </EntryText>
     </EntryWrapper>
   )
 }
 
-export default Entry
+export default Dataset

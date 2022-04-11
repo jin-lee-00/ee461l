@@ -15,6 +15,7 @@ import {
 } from './SectionContent.style'
 import GUIProject from '../GUIProject';
 import GUIResource from '../GUIResource';
+import GUIDataset from '../GUIDataset';
 
 const SectionContent = ({
   lightBg, 
@@ -36,6 +37,8 @@ const SectionContent = ({
         return <GUIProject />;
       case "resources":
         return <GUIResource />;
+      case "datasets":
+        return <GUIDataset />;
       default:
         return "";
     }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { EntryForm, FormBtn, FormContainer, FormInput, FormLabel, GUIButton } from './GUI.style'
 
-const AddEntry = ({ onAdd }) => {
+const AddDataset = ({ onAdd }) => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
 
@@ -22,7 +22,7 @@ const AddEntry = ({ onAdd }) => {
   return (
     <EntryForm onSubmit={onSubmit}>
       <FormContainer>
-        <FormLabel>Entry</FormLabel>
+        <FormLabel>Dataset</FormLabel>
         <FormInput 
           type='text' 
           placeholder='Add Entry'
@@ -45,4 +45,4 @@ const AddEntry = ({ onAdd }) => {
   )
 }
 
-export default AddEntry
+export default AddDataset
