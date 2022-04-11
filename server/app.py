@@ -24,6 +24,36 @@ app.secret_key = "temp_secret_key"
 ##########################################################################################
 # DATABASE
 ##########################################################################################
+
+_user = {
+  "_id": 000000,
+  "name": "test",
+  "email": "test@test.com",
+  "password": "test"
+}
+
+_project = {
+  "_id":000000,
+  "name":"test_desc",
+  "desc":"test_desc",
+  "resources": {}
+}
+
+_resources = [
+  {
+    "_id": 0,
+    "name": "HWSet1",
+    "capacity": 200,
+    "availability": 200
+  },
+  {
+    "_id": 0,
+    "name": "HWSet2",
+    "capacity": 200,
+    "availability": 200
+  }
+]
+
 _datasets = [
   {# 14.6 MB
     "_id": 0,
@@ -67,10 +97,11 @@ db_resources = data.resources
 db_projects = data.projects
 db_datasets = data.datasets
 
-if(db_datasets.count_documents({}) == 0):
-  db_datasets.insert_many(_datasets)
-else:
-  print(db_datasets.count_documents({}))
+if(db_users.count_documents({}) == 0): db_users.insert_one(_user)
+if(db_projects.count_documents({}) == 0): db_projects.insert_one(_project)
+if(db_resources.count_documents({}) == 0): db_resources.insert_many(_resources)
+if(db_datasets.count_documents({}) == 0): db_datasets.insert_many(_datasets)
+
 ##########################################################################################
 # API
 ##########################################################################################
