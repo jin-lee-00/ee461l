@@ -162,7 +162,10 @@ def signin():
 def tokencreate():
     request_data = json.loads(request.data)
     email = request_data['email']
-    access_token = create_access_token(identity=email)
+    email_cursor = db_users.find_one({"email": email})
+    tempname = email_cursor["name"]
+    print(tempname)
+    access_token = create_access_token(identity=tempname)
     response = request_data
     response["token"] = access_token
     response["status"] = 200
