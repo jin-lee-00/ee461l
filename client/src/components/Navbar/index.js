@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { IconContext } from 'react-icons/lib';
 import { animateScroll } from 'react-scroll';
+import Button from 'react-bootstrap/Button';
 import {
   Nav, 
   NavLink, 
@@ -10,7 +11,7 @@ import {
   NavBtnLink
 } from './Navbar.style'
 
-const Navbar = ({ toggle }) => {
+const Navbar = ({ toggle, isLoggedIn, logOut }) => {
   const [scrollNav, setScrollNav] = useState(false)
 
   const changeNav = () => {
@@ -28,6 +29,8 @@ const Navbar = ({ toggle }) => {
   const toggleHome = () => {
     animateScroll.scrollToTop();
   }
+
+
 
 
   return (
@@ -78,7 +81,11 @@ const Navbar = ({ toggle }) => {
             </NavLink>
           </NavMenu>
           <NavBtn>
-            <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+           {isLoggedIn ? 
+          <Button onClick={logOut}>Log out</Button> 
+          :
+          <NavBtnLink to='/signin'>Sign In</NavBtnLink> 
+          }
           </NavBtn>
         </Nav>
       </IconContext.Provider>

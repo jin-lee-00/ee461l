@@ -40,7 +40,6 @@ const SignIn = () => {
     .then(response => response.json())
     .then(data => {
           if (data.status == 200) {
-            navigate("/")
             console.log(data)
 
             fetch("http://localhost:5000/token", {
@@ -63,10 +62,13 @@ const SignIn = () => {
                   .catch(error => {
                       console.error("Storing token error", error);
                   })
-
-
             setEmail("")
             setPassword("")
+            setTimeout(() => {
+              navigate("/")
+            }, 1000);
+
+
           } else if (data.status == 400) {
             console.log(data)
             alert('User does not exist, sign up instead')

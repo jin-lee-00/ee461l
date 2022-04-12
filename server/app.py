@@ -164,7 +164,6 @@ def tokencreate():
     email = request_data['email']
     email_cursor = db_users.find_one({"email": email})
     tempname = email_cursor["name"]
-    print(tempname)
     access_token = create_access_token(identity=tempname)
     response = request_data
     response["token"] = access_token
@@ -178,6 +177,14 @@ def protected():
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200
 
+## logout
+# @app.route('/logout', methods=['GET'])
+# @jwt_required()
+# def logout():
+#   client.close()
+#   jti = get_jwt()["jti"]
+#   jwt_redis_blocklist.set(jti, "", ex=ACCESS_EXPIRES)
+#   return jsonify(msg="Access token revoked")
 
 ## projects
 @app.route('/project/add', methods=['POST'])
@@ -219,6 +226,14 @@ def getprojects():
   projects_cursor = db_projects.find()
   projects_list = list(projects_cursor)
   projects_json = dumps(projects_list)
+  return projects_json
+
+@app.route('/project/join/<_id>')
+def joinproject(_id):
+  project_cursor = db_projects.find_one({"_id":int(_id)})
+  current_user = get_jwt_identity()
+  project_cursor["users"].append(current_user)
+  project_json = dumps(project_cursor)
   return projects_json
 
 # Manage resources
