@@ -14,7 +14,7 @@ from flask_jwt_extended import JWTManager
 
 # from user.models import User
 
-app = Flask(__name__, static_folder="client/build", static_url_path="/")
+app = Flask(__name__, static_folder="client/build", static_url_path="")
 app.config["JWT_SECRET_KEY"] = "super-duper-secret"
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = False # dangerous
 jwt = JWTManager(app)
@@ -348,12 +348,9 @@ def getdatasets():
 
 
 @app.route("/")
-def index():
-    return app.send_static_file("index.html")
+def home():
+    return send_from_directory(app.static_folder, "index.html")
 
-@app.errorhandler(404)
-def not_found(e):
-  return app.send_static_file("index.html")
 ##########################################################################################
 
 # client.close()
@@ -361,4 +358,4 @@ def not_found(e):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=False, port=os.environ.get("PORT", 80))
+    app.run(host='0.0.0.0')
