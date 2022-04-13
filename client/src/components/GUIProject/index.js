@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Projects from "./Projects";
 import {
   GUIContainer,
@@ -36,7 +36,7 @@ const GUIProject = () => {
   }, [])
 
   const fetchProjects = async () => {
-    const res = await fetch("/project/getall")
+    const res = await fetch("http://localhost:5000/project/getall")
     const data = await res.json()
     console.log(data)
     return data
@@ -59,7 +59,7 @@ const GUIProject = () => {
 
   const deleteProject = (_id) => {
     console.log("test" + _id)
-    fetch("/project/delete", {
+    fetch("http://localhost:5000/project/delete", {
       method: "POST",
       body: JSON.stringify({
         _id: _id
@@ -84,7 +84,7 @@ const GUIProject = () => {
       "HWSet2": 0
     }
     const newProject = { _id, ...project, resources}
-    fetch("/project/add", {
+    fetch("http://localhost:5000/project/add", {
       method: "POST",
       body: JSON.stringify({
         _id: newProject._id,

@@ -6,7 +6,7 @@ import {
   TopLine,
   GUIButton
 } from './GUI.style';
-//import AddDataset from "./AddDataset";
+import AddDataset from "./AddDataset";
 import { useNavigate } from "react-router-dom";
 
 const GUIDataset = () => {
@@ -25,7 +25,7 @@ const GUIDataset = () => {
   }, [])
 
   const fetchDatasets = async () => {
-    const res = await fetch("/dataset/getall")
+    const res = await fetch("http://localhost:5000/dataset/getall")
     const data = await res.json()
     console.log(data)
     return data
@@ -43,7 +43,7 @@ const GUIDataset = () => {
 
   const deleteDataset = (_id) => {
     console.log("test" + _id)
-    fetch("/project/delete", {
+    fetch("http://localhost:5000/project/delete", {
       method: "POST",
       body: JSON.stringify({
         _id: _id

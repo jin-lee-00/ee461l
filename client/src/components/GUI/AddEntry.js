@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { EntryForm, FormBtn, FormContainer, FormInput, FormLabel } from './GUI.style'
+import { EntryForm, FormBtn, FormContainer, FormInput, FormLabel, GUIButton } from './GUI.style'
 
 const AddEntry = ({ onAdd }) => {
   const [name, setName] = useState('')

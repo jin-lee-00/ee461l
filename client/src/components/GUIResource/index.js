@@ -23,7 +23,7 @@ const GUIResource = () => {
   }, [])
 
   const fetchResources = async () => {
-    const res = await fetch("/resource/getall")
+    const res = await fetch("http://localhost:5000/resource/getall")
     const data = await res.json()
     console.log(data)
     return data
@@ -39,7 +39,7 @@ const GUIResource = () => {
 
   const deleteResource = (_id) => {
     console.log("test" + _id)
-    fetch("/resource/delete", {
+    fetch("http://localhost:5000/resource/delete", {
       method: "POST",
       body: JSON.stringify({
         _id: _id
@@ -60,7 +60,7 @@ const GUIResource = () => {
     const _id = Math.floor(Math.random() * 10000) + 1
     const availability = resource.capacity
     const newResource = { _id, ...resource, availability}
-    fetch("/resource/add", {
+    fetch("http://localhost:5000/resource/add", {
       method: "POST",
       body: JSON.stringify({
         _id: newResource._id,
