@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import { IconContext } from 'react-icons/lib';
 import { animateScroll } from 'react-scroll';
-import Button from 'react-bootstrap/Button';
 import {
   Nav, 
   NavLink, 
   Bars, 
   NavMenu, 
   NavBtn, 
-  NavBtnLink
+  NavBtnLink,
+  NavBtnLogout
 } from './Navbar.style'
 
 const Navbar = ({ toggle, isLoggedIn, logOut }) => {
@@ -82,7 +82,7 @@ const Navbar = ({ toggle, isLoggedIn, logOut }) => {
           </NavMenu>
           <NavBtn>
            {isLoggedIn ? 
-          <Button onClick={logOut}>Log out</Button> 
+          <NavBtnLogout onClick={logOut}>Log out</NavBtnLogout> 
           :
           <NavBtnLink to='/signin'>Sign In</NavBtnLink> 
           }

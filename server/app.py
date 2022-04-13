@@ -234,7 +234,7 @@ def joinproject(_id):
   current_user = get_jwt_identity()
   project_cursor["users"].append(current_user)
   project_json = dumps(project_cursor)
-  return projects_json
+  return project_json
 
 # Manage resources
 @app.route('/project/<_id>/checkout/<resource_name>/<qty>')
