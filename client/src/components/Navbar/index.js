@@ -11,7 +11,7 @@ import {
   NavBtnLogout
 } from './Navbar.style'
 
-const Navbar = ({ toggle, isLoggedIn, logOut }) => {
+const Navbar = ({ toggle, logOut }) => {
   const [scrollNav, setScrollNav] = useState(false)
 
   const changeNav = () => {

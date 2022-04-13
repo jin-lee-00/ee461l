@@ -1,6 +1,6 @@
 from hashlib import new
 from flask import Flask, jsonify, request, json, redirect
-from flask_cors import CORS
+#from flask_cors import CORS
 import pymongo
 from bson.json_util import dumps
 from flask.helpers import send_from_directory
@@ -14,12 +14,12 @@ from flask_jwt_extended import JWTManager
 
 # from user.models import User
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="../client/build", static_url_path="")
 app.config["JWT_SECRET_KEY"] = "super-duper-secret"
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = False # dangerous
 jwt = JWTManager(app)
 # app = Flask(__name__, , static_folder='./build', static_url_path='/')
-CORS(app)
+#CORS(app)
 app.secret_key = "temp_secret_key"
 
 ##########################################################################################
@@ -349,9 +349,7 @@ def getdatasets():
 
 @app.route("/")
 def home():
-    # return send_from_directory(app.static_folder, "index.html")
-    return "HaaS Project Group 2"
-
+    return send_from_directory(app.static_folder, "index.html")
 
 ##########################################################################################
 
@@ -360,5 +358,4 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
-    # app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
+    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))

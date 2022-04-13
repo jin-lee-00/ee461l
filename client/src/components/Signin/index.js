@@ -27,7 +27,7 @@ const SignIn = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/user/signin", {
+    fetch("/user/signin", {
       method: "POST",
       body: JSON.stringify({ 
         email: email, 
@@ -42,7 +42,7 @@ const SignIn = () => {
           if (data.status === 200) {
             console.log(data)
 
-            fetch("http://localhost:5000/token", {
+            fetch("/token", {
                   method: "POST",
                   body: JSON.stringify({
                     email:email
