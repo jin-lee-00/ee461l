@@ -8,7 +8,7 @@ import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from '../components
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(isLoggedIn);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');

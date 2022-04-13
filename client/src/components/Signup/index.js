@@ -44,7 +44,7 @@ const SignUp = () => {
     })
     .then(response => response.json())
     .then(data => {
-      if (data.status == 200) {
+      if (data.status === 200) {
         console.log(data)
           fetch("http://localhost:5000/token", {
               method: "POST",
@@ -57,7 +57,7 @@ const SignUp = () => {
           })
               .then(tokendata => {
                   console.log(tokendata)
-                  if (tokendata.status == 200) return tokendata.json();
+                  if (tokendata.status === 200) return tokendata.json();
                   else alert("Token fetch error");
               })
               .then(tokendata => {
@@ -74,7 +74,7 @@ const SignUp = () => {
 
           
       }
-      else if (data.status == 400) {
+      else if (data.status === 400) {
         console.log(data)
         alert('User already exists, sign in instead')
       }

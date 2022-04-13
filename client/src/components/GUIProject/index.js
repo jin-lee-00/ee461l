@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Projects from "./Projects";
 import {
   GUIContainer,
@@ -93,6 +93,7 @@ const GUIProject = () => {
         resources: newProject.resources
       }),
       headers: {
+        "Authorization": "Bearer " + sessionStorage.getItem("token"),
         "Content-type": "application/json"
       }
     })

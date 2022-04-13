@@ -81,7 +81,7 @@ const Navbar = ({ toggle, isLoggedIn, logOut }) => {
             </NavLink>
           </NavMenu>
           <NavBtn>
-           {isLoggedIn ? 
+          {(sessionStorage.getItem("token")) ? 
           <NavBtnLogout onClick={logOut}>Log out</NavBtnLogout> 
           :
           <NavBtnLink to='/signin'>Sign In</NavBtnLink> 

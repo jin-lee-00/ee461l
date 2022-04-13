@@ -16,6 +16,7 @@ from flask_jwt_extended import JWTManager
 
 app = Flask(__name__)
 app.config["JWT_SECRET_KEY"] = "super-duper-secret"
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = False # dangerous
 jwt = JWTManager(app)
 # app = Flask(__name__, , static_folder='./build', static_url_path='/')
 CORS(app)
@@ -156,8 +157,7 @@ def signin():
     response["status"] = 400
     return response
 
-
-#token stuff
+# authentication
 @app.route("/token", methods=[ "POST"])
 def tokencreate():
     request_data = json.loads(request.data)
@@ -200,7 +200,7 @@ def addproject():
     "name": name,
     "desc": desc,
     "resources": resources,
-    "users": [jsonify(get_jwt_identity())]
+    "users": [str(get_jwt_identity())]
   })
   return request_data
 
