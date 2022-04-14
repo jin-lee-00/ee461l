@@ -200,7 +200,7 @@ def addproject():
     "name": name,
     "desc": desc,
     "resources": resources,
-    "users": [str(get_jwt_identity())]
+    "users": []
   })
   return request_data
 
@@ -228,11 +228,16 @@ def getprojects():
   projects_json = dumps(projects_list)
   return projects_json
 
-@app.route('/project/join/<_id>')
+@app.route('/project/join/<_id>', methods=['GET', 'POST'])
+@jwt_required()
 def joinproject(_id):
   project_cursor = db_projects.find_one({"_id":int(_id)})
   current_user = get_jwt_identity()
-  project_cursor["users"].append(current_user)
+  users = list(project_cursor["users"])
+  users.append(current_user)
+  print(users)
+  db_projects.update_one({'_id': int(_id)}, {'$set': {'users': users}}, upsert=True)
+  project_cursor = db_projects.find_one({"_id":int(_id)})
   project_json = dumps(project_cursor)
   return project_json
 

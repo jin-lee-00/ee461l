@@ -19,7 +19,8 @@ const ProjectDashboard = ({ _id }) => {
   const [checkedOut, setCheckedOut] = useState({HWSet1: "", HWSet2: ""})
   const [resources, setResources] = useState({})
   const [qty, setQty] = useState({HWSet1: "", HWSet2: ""})
-  
+  const [users, setUsers] = useState([]);
+
   useEffect(() => {
     const getProject = async () => {
       const projectFromServer = await fetchProject()
@@ -28,6 +29,7 @@ const ProjectDashboard = ({ _id }) => {
       setName(projectFromServer["name"])
       setDesc(projectFromServer["desc"])
       setCheckedOut(projectFromServer["resources"])
+      setUsers(projectFromServer["users"])
     }
 
     const getResources = async () => {
@@ -36,6 +38,7 @@ const ProjectDashboard = ({ _id }) => {
       console.log(resourcesFromServer)
       setResources(resourcesFromServer)
     }
+
     
     getProject()
     getResources()
@@ -96,7 +99,7 @@ const ProjectDashboard = ({ _id }) => {
       alert("400: quantity > availability")
     } else {// success
       console.log(name, qty)
-    }
+  }
 
     
 
@@ -105,6 +108,35 @@ const ProjectDashboard = ({ _id }) => {
     console.log("checkin done")
     setResources(await fetchResources())
     setCheckedOut((await fetchProject())["resources"])
+    return data
+  }
+
+
+  const handleJoinProject = async () => {
+    // console.log("JOIN ")
+    const s  = sessionStorage.getItem("token")
+    console.log(s)
+    
+    //   const resp = await fetch(`https://your_api.com/protected`, {
+    //     method: 'GET',
+    //     headers: { 
+    //       "Content-Type": "application/json"
+    //       'Authorization': 'Bearer '+token // ⬅⬅⬅ authorization token
+    //     } 
+    //  })
+    const res = await fetch("http://localhost:5000/project/join/"+_id, {
+      headers: {"Authorization" : 'Bearer ' +  s}
+    })
+    // update checkedOut, error handling
+    // if(res.status === 400) {
+    //   alert("Error")
+    // } else {// success
+    //   console.log(res)
+    // }
+
+    const data = await res.json()
+    console.log(data)
+    setUsers((await fetchProject())["users"]);
     return data
   }
 
@@ -156,12 +188,17 @@ const ProjectDashboard = ({ _id }) => {
               </>
               <FormSection>
               <H2>Users</H2>
-              <P> TODO: place joined users here
+              <P> 
+                {users.map((user, index) => {
+                  return <div
+                  key={index}
+                  >User: {user}</div>
+                })}
                 < br/>
                 < br/>
-                <input type = "button"
+              <input type = "button"
                 value = "join project"
-              // TODO: onClick={handleJoinProject}
+                onClick={handleJoinProject}
               />
               </P>
             </FormSection>
