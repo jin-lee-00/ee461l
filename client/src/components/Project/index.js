@@ -199,6 +199,7 @@ const ProjectDashboard = ({ _id }) => {
             </FormSection>
             <FormSection>
               <input type = "button"
+                className="custom-button"
                 value = "join project"
                 onClick={handleJoinProject}
               />
