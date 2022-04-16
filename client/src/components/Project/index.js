@@ -197,6 +197,7 @@ const ProjectDashboard = ({ _id }) => {
                 < br/>
                 < br/>
               <input type = "button"
+                className="custom-button"
                 value = "join project"
                 onClick={handleJoinProject}
               />

@@ -13,3 +13,19 @@ a {
   width: 100%;
   max-width: 500px;
 }
+
+.custom-button {
+  background: #bf5700;
+  padding: 10px 22px;
+  border-radius: 50px;
+  color: #fff;
+  outline: none;
+  border-width: 0;
+  transform: .25s;
+  cursor: pointer;
+}
+
+.custom-button:active {
+  opacity: .7;
+  transform: scale(.95);
+}
