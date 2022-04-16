@@ -10,7 +10,9 @@ import {
   H2,
   P,
   Label,
-  Input
+  Input,
+  BtnInput,
+  BtnJoin
 } from './Project.style'
 
 const ProjectDashboard = ({ _id }) => {
@@ -172,14 +174,14 @@ const ProjectDashboard = ({ _id }) => {
                       value={qty[resource.name]}
                       onChange={handleQtyChange}
                     />
-                    <input type="button" 
+                    <BtnInput type="button" 
                       name={resource.name}
-                      value="check out" 
+                      value="+" 
                       onClick={handleCheckOut}
                     />
-                    <input type="button" 
+                    <BtnInput type="button" 
                       name={resource.name}
-                      value="check in" 
+                      value="-" 
                       onClick={handleCheckIn}
                     />
                     <P>Available: {resource.availability} </P>
@@ -198,9 +200,9 @@ const ProjectDashboard = ({ _id }) => {
               </>
             </FormSection>
             <FormSection>
-              <input type = "button"
-                className="custom-button"
-                value = "join project"
+              <BtnJoin type = "button"
+                //className="custom-button"
+                value = "Join Project"
                 onClick={handleJoinProject}
               />
             </FormSection>

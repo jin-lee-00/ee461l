@@ -114,6 +114,37 @@ export const Input = styled.input`
   border-radius: 4px;
 `
 
+export const BtnInput = styled.input`
+  width: 60px;
+  background: #bf5700;
+  padding: 5px 10px;
+  white-space: nowrap;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 15px;
+  margin-left: 10px;
+`
+
+export const BtnJoin =  styled.input`
+  background: #bf5700;
+  padding: 10px 22px;
+  border-radius: 50px;
+  color: #fff;
+  outline: none;
+  border-width: 0;
+  transform: .25s;
+  cursor: pointer;
+
+  &:active {
+    opacity: .7;
+    transform: scale(.95);
+  }
+`
+
 export const Button = styled.button`
   background: #bf5700;
   padding: 16px 0;
