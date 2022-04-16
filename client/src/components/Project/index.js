@@ -186,23 +186,24 @@ const ProjectDashboard = ({ _id }) => {
                   </div>
                 ))}
               </>
-              <FormSection>
+            </FormSection>
+            <FormSection>
               <H2>Users</H2>
-              <P> 
+              <> 
                 {users.map((user, index) => {
-                  return <div
+                  return <P
                   key={index}
-                  >User: {user}</div>
+                  >{user}</P>
                 })}
-                < br/>
-                < br/>
+              </>
+            </FormSection>
+            <FormSection>
               <input type = "button"
                 value = "join project"
                 onClick={handleJoinProject}
               />
-              </P>
             </FormSection>
-            </FormSection>
+            
           </Form>
         </Content>
       </Wrap>     

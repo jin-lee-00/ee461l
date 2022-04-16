@@ -70,6 +70,7 @@ export const Form = styled.div`
 `
 export const FormSection = styled.div`
   margin-bottom: 20px;
+  text-align: center;
 `
 
 export const H1 = styled.h1`
@@ -89,7 +90,7 @@ export const H2 = styled.h2`
 `
 
 export const P = styled.p`
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   color: #fff;
   font-size: 12px;
   font-weight: 1;

@@ -48,7 +48,7 @@ _resources = [
     "availability": 200
   },
   {
-    "_id": 0,
+    "_id": 1,
     "name": "HWSet2",
     "capacity": 200,
     "availability": 200
@@ -88,7 +88,8 @@ _datasets = [
   },
 ]
 ## connect to mongoDb client cluster0
-client = pymongo.MongoClient("localhost", 27017) # local db for development
+CONNECTION_STRING = "mongodb+srv://jin-lee-00:sorby2XHsL7BAufJ@cluster0.lje5i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+client = pymongo.MongoClient(CONNECTION_STRING) # local db for development
 
 data = client.data
 
