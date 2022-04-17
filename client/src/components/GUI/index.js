@@ -29,7 +29,7 @@ const GUI = ({ sectionName, unit }) => {
   }, [])
 
   const fetchEntries = async () => {
-    const res = await fetch("http://localhost:5000/project/getall")
+    const res = await fetch("/project/getall")
     const data = await res.json()
     console.log(data)
     return data
@@ -45,7 +45,7 @@ const GUI = ({ sectionName, unit }) => {
 
   const deleteEntry = (_id) => {
     console.log("test" + _id)
-    fetch("http://localhost:5000/project/delete", {
+    fetch("/project/delete", {
       method: "POST",
       body: JSON.stringify({
         _id: _id
@@ -65,7 +65,7 @@ const GUI = ({ sectionName, unit }) => {
   const addEntry = (entry) => {
     const _id = Math.floor(Math.random() * 1000000) + 1
     const newEntry = { _id, ...entry}
-    fetch("http://localhost:5000/project/add", {
+    fetch("/project/add", {
       method: "POST",
       body: JSON.stringify({
         _id: newEntry._id,

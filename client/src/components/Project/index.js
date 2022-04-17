@@ -47,7 +47,7 @@ const ProjectDashboard = ({ _id }) => {
   }, [])
 
   const fetchProject = async () => {
-    const res = await fetch("http://localhost:5000/project/get/" + _id)
+    const res = await fetch("/project/get/" + _id)
     const data = await res.json()
     console.log("fetch project")
     console.log(data)
@@ -55,7 +55,7 @@ const ProjectDashboard = ({ _id }) => {
   }
 
   const fetchResources = async () => {
-    const res = await fetch("http://localhost:5000/resource/getall")
+    const res = await fetch("/resource/getall")
     const data = await res.json()
     console.log("fetch resources")
     console.log(data)
@@ -74,7 +74,7 @@ const ProjectDashboard = ({ _id }) => {
   const handleCheckOut = async (e) => {
     const {name} = e.target
     console.log("checkout: " + qty[name] + " of " + name)
-    const res = await fetch("http://localhost:5000/project/"+_id+"/checkout/"+name+"/"+qty[name])
+    const res = await fetch("/project/"+_id+"/checkout/"+name+"/"+qty[name])
     // update checkedOut, error handling
     if(res.status === 400) {
       alert("400: quantity > availability")
@@ -95,10 +95,10 @@ const ProjectDashboard = ({ _id }) => {
   const handleCheckIn = async (e) => {
     const {name} = e.target
     console.log("checkin: " + qty[name] + " of " + name)
-    const res = await fetch("http://localhost:5000/project/"+_id+"/checkin/"+name+"/"+qty[name])
+    const res = await fetch("/project/"+_id+"/checkin/"+name+"/"+qty[name])
     // update checkedOut, error handling
     if(res.status === 400) {
-      alert("400: quantity > availability")
+      alert("400: checkedout < availability")
     } else {// success
       console.log(name, qty)
   }
@@ -126,7 +126,7 @@ const ProjectDashboard = ({ _id }) => {
     //       'Authorization': 'Bearer '+token // ⬅⬅⬅ authorization token
     //     } 
     //  })
-    const res = await fetch("http://localhost:5000/project/join/"+_id, {
+    const res = await fetch("/project/join/"+_id, {
       headers: {"Authorization" : 'Bearer ' +  s}
     })
     // update checkedOut, error handling
