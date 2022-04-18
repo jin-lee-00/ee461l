@@ -14,7 +14,7 @@ from flask_jwt_extended import JWTManager
 
 # from user.models import User
 
-app = Flask(__name__, static_folder='client/build', static_url_path='')
+app = Flask(__name__, static_folder='client/build', static_url_path='/')
 app.config["JWT_SECRET_KEY"] = "super-duper-secret"
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = False # dangerous
 jwt = JWTManager(app)
