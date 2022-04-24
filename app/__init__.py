@@ -1,15 +1,5 @@
-from hashlib import new
-from flask import Flask, jsonify, request, json, redirect
-# from flask_cors import CORS
+from flask import Flask
 import pymongo
-from bson.json_util import dumps
-from flask.helpers import send_from_directory
-import os
-from passlib.hash import pbkdf2_sha256
-
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 
 # from user.models import User
@@ -99,8 +89,8 @@ db_resources = data.resources
 db_projects = data.projects
 db_datasets = data.datasets
 
-from app import routes
 from app.views import dataset
 from app.views import project
 from app.views import resource
 from app.views import user
+from app.views import main

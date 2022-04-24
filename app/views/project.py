@@ -1,17 +1,9 @@
 from app import db_projects, db_resources, app
-from hashlib import new
-from flask import Flask, jsonify, request, json, redirect
-# from flask_cors import CORS
-import pymongo
+from flask import request, json
 from bson.json_util import dumps
-from flask.helpers import send_from_directory
-import os
-from passlib.hash import pbkdf2_sha256
 
-from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
-from flask_jwt_extended import JWTManager
 
 ## projects
 @app.route('/project/add', methods=['POST'])
