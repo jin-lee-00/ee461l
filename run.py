@@ -12,7 +12,7 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 
-# from user.models import User
+'''
 
 app = Flask(__name__, static_folder='build', static_url_path='')
 app.config["JWT_SECRET_KEY"] = "super-duper-secret"
@@ -351,7 +351,7 @@ def getdatasets():
   datasets_list = list(datasets_cursor)
   datasets_json = dumps(datasets_list)
   return datasets_json
-
+*/
 
 @app.route("/")
 def home():
@@ -364,8 +364,8 @@ def not_found(e):
 ##########################################################################################
 
 # client.close()
-
-
+'''
+from app import app
 
 if __name__ == "__main__":
     # app.run(debug=True)
