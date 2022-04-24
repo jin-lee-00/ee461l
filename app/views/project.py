@@ -27,6 +27,11 @@ def addproject():
 def deleteproject():
   request_data = json.loads(request.data)
   _id = request_data["_id"]
+  resources = request_data["resources"]
+  for key, value in resources:
+    resource_cursor = db_resources.find_one({"name": key})
+    new_availability = resource_cursor['availability'] + value
+    db_resources.update_one({"name": key}, {'$set': {'availability': new_availability}})
   db_projects.delete_one({"_id":_id})
   return request_data
 

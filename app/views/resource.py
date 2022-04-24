@@ -6,19 +6,28 @@ from bson.json_util import dumps
 @app.route('/resource/add', methods=['POST'])
 def addresource():
   request_data = json.loads(request.data)
+  response = request_data
   _id = request_data["_id"]
   name = request_data["name"]
   capacity = int(request_data["capacity"])
   availability = capacity
   checkout = {} # store checkout as [user:qty] key:value pair
-  db_resources.insert_one({
-    "_id": _id,
-    "name": name,
-    "capacity": capacity,
-    "availability": availability,
-    "checkout": checkout
-  }) 
-  return request_data
+  name_cursor = db_resources.find_one({"name": name}) # projects must have unique names
+  if name_cursor == None:
+    db_resources.insert_one({
+      "_id": _id,
+      "name": name,
+      "capacity": capacity,
+      "availability": availability,
+      "checkout": checkout
+    }) 
+    # append the status to
+    response["status"] = 200
+    return response
+  else:
+    # resource already exists
+    response["status"] = 400
+    return response
 
 @app.route('/resource/delete', methods=['POST'])
 def deleteresource():

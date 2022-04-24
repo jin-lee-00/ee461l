@@ -9,7 +9,7 @@ const AddResource = ({ onAdd }) => {
     e.preventDefault()
 
     if(!name) {
-      alert('Please name the resourrce')
+      alert('Please name the resource')
       return
     }
 

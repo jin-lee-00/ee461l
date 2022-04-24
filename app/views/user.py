@@ -1,9 +1,9 @@
-from app import db_users, app
+from app import db_users, app, client, ACCESS_EXPIRES
 from flask import jsonify, request, json
 from passlib.hash import pbkdf2_sha256
 
 from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import get_jwt_identity, get_jwt, jwt_redis_blocklist
 from flask_jwt_extended import jwt_required
 
 ## users 
@@ -72,15 +72,15 @@ def tokencreate():
 @app.route("/protected", methods=["POST"])
 @jwt_required()
 def protected():
-    #identity=email
+    #identity=name
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200
 
 ## logout
-# @app.route('/logout', methods=['GET'])
-# @jwt_required()
-# def logout():
-#   client.close()
-#   jti = get_jwt()["jti"]
-#   jwt_redis_blocklist.set(jti, "", ex=ACCESS_EXPIRES)
-#   return jsonify(msg="Access token revoked")
+@app.route('/logout', methods=['DELETE'])
+@jwt_required()
+def logout():
+  client.close()
+  jti = get_jwt()["jti"]
+  jwt_redis_blocklist.set(jti, "", ex=ACCESS_EXPIRES)
+  return jsonify(msg="Access token revoked")

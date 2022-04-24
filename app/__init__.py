@@ -1,12 +1,15 @@
 from flask import Flask
 import pymongo
 from flask_jwt_extended import JWTManager
+from datetime import timedelta
 
 # from user.models import User
 
+ACCESS_EXPIRES = timedelta(hours=1)
+
 app = Flask(__name__, static_folder='../build', static_url_path='')
 app.config["JWT_SECRET_KEY"] = "super-duper-secret"
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = False # dangerous
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = ACCESS_EXPIRES
 jwt = JWTManager(app)
 # 
 # CORS(app)

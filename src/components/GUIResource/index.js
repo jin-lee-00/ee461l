@@ -73,7 +73,13 @@ const GUIResource = () => {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+      if (data.status === 200) {
+        console.log(data)
+      }
+      else if (data.status === 400) {
+        console.log(data)
+        alert('User does not exist, sign up instead')
+      }
     })
     setResources([...resources, newResource])
   }
