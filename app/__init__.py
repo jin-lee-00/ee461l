@@ -100,3 +100,7 @@ db_projects = data.projects
 db_datasets = data.datasets
 
 from app import routes
+from app.views import dataset
+from app.views import project
+from app.views import resource
+from app.views import user
