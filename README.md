@@ -58,5 +58,5 @@ the changes will now be deployed
 **IMPORTANT:** Please ensure that the deployment is functional at the end of each work session, **then** sync the changes with this repo
 
 # Technologies Used
-[react-bootstrap](https://react-bootstrap.netlify.app/getting-started/introduction/)
+[react-bootstrap](https://react-bootstrap.netlify.app/getting-started/introduction/)  
 [styled components](https://styled-components.com/)
