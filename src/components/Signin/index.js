@@ -43,31 +43,31 @@ const SignIn = () => {
             console.log(data)
 
             fetch("/token", {
-                  method: "POST",
-                  body: JSON.stringify({
-                    email:email
-              }),
-                  headers: {
-                     "Content-type": "application/json"
-                  }
+                method: "POST",
+                body: JSON.stringify({
+                  email:email
+                }),
+                headers: {
+                  "Content-type": "application/json"
+                }
               })
-                  .then(tokendata => {
-                      console.log(tokendata)
-                      if (tokendata.status === 200) return tokendata.json();
-                      else alert("Token fetch error");
-                  })
-                  .then(tokendata => {
-                      sessionStorage.setItem("token", tokendata.token)
-                  })
-                  .catch(error => {
-                      console.error("Storing token error", error);
-                  })
+              .then(tokendata => {
+                console.log(tokendata)
+                if (tokendata.status === 200) return tokendata.json();
+                else alert("Token fetch error");
+              })
+              .then(tokendata => {
+                  sessionStorage.setItem("token", tokendata.token)
+                  sessionStorage.setItem("name", tokendata.name)
+              })
+              .catch(error => {
+                  console.error("Storing token error", error);
+            })
             setEmail("")
             setPassword("")
             setTimeout(() => {
               navigate("/")
             }, 1000);
-
 
           } else if (data.status === 400) {
             console.log(data)

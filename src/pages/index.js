@@ -9,12 +9,14 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
     if (token) {
       console.log("Is logged in");
       setIsLoggedIn(true);
+      setCurrentUser(sessionStorage.getItem('name'))
     } else {
       console.log("Is not signed in")
     }
@@ -43,6 +45,7 @@ const Home = () => {
       <Navbar toggle={toggle} isLoggedIn={isLoggedIn} logOut={logOut}/>
       <SectionHaaS
         isLoggedIn={isLoggedIn}
+        currentUser={currentUser}
       />
       <SectionContent {...homeObjOne} />
       <SectionContent {...homeObjTwo} />

@@ -67,6 +67,7 @@ def tokencreate():
     tempname = email_cursor["name"]
     access_token = create_access_token(identity=tempname)
     response = request_data
+    response["name"] = tempname
     response["token"] = access_token
     response["status"] = 200
     return response

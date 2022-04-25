@@ -12,7 +12,7 @@ import {
 import { BtnLink } from '../Button.style'
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
-const SectionHaaS = (props) => {
+const SectionHaaS = (isLoggedIn, currentUser) => {
   const [hover, setHover] = useState(false)
 
   const onHover = () => {
@@ -36,17 +36,16 @@ const SectionHaaS = (props) => {
         Jin Lee, Brandi Nguyen, Allen Zhou, Carson Bone, Noah Zamarripa  
         </HaasP>
         <HaasBtnWrapper>
-         {
-             props.isLoggedIn ?
-             <>Welcome Back, </> 
+          {isLoggedIn ?
+            <>Welcome Back, {currentUser} </> 
           :
-          <BtnLink 
-          to='signup' 
-          onMouseEnter={onHover} 
-          onMouseLeave={onHover}
-          >
-           Sign Up {hover ? <ArrowForward /> : <ArrowRight />}
-          </BtnLink>
+            <BtnLink 
+            to='signup' 
+            onMouseEnter={onHover} 
+            onMouseLeave={onHover}
+            >
+            Sign Up {hover ? <ArrowForward /> : <ArrowRight />}
+            </BtnLink>
           }
         </HaasBtnWrapper>
       </HaasContent>
