@@ -37,7 +37,7 @@ const SectionHaaS = (isLoggedIn, currentUser) => {
         </HaasP>
         <HaasBtnWrapper>
           {isLoggedIn ?
-            <>Welcome Back, {currentUser} </> 
+            <HaasP>Welcome Back, {currentUser} </HaasP> 
           :
             <BtnLink 
             to='signup' 
