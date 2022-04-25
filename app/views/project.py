@@ -29,7 +29,7 @@ def deleteproject():
   _id = request_data["_id"]
   project_cursor = db_projects.find_one({"_id": int(_id)})
   resources = project_cursor["resources"]
-  for key, value in resources:
+  for key, value in resources.items():
     resource_cursor = db_resources.find_one({"name": key})
     new_availability = resource_cursor['availability'] + value
     db_resources.update_one({"name": key}, {'$set': {'availability': new_availability}})
