@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { 
   HaasContainer, 
   HaasBg, 
@@ -12,8 +12,13 @@ import {
 import { BtnLink } from '../Button.style'
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
-const SectionHaaS = (isLoggedIn, currentUser) => {
+const SectionHaaS = (props) => {
   const [hover, setHover] = useState(false)
+  const [currentUser, setCurrentUser] = useState("")
+
+  useEffect(() => {
+    setCurrentUser(sessionStorage.getItem("name"))
+  });
 
   const onHover = () => {
     setHover(!hover)
@@ -36,15 +41,15 @@ const SectionHaaS = (isLoggedIn, currentUser) => {
         Jin Lee, Brandi Nguyen, Allen Zhou, Carson Bone, Noah Zamarripa  
         </HaasP>
         <HaasBtnWrapper>
-          {isLoggedIn ?
-            <HaasP>Welcome Back {sessionStorage.getItem('name')}</HaasP> 
+          {props.isLoggedIn ?
+            <HaasP>Welcome Back {String(currentUser)}</HaasP> 
           :
             <BtnLink 
-            to='signup' 
-            onMouseEnter={onHover} 
-            onMouseLeave={onHover}
+              to='signup' 
+              onMouseEnter={onHover} 
+              onMouseLeave={onHover}
             >
-            Sign Up {hover ? <ArrowForward /> : <ArrowRight />}
+              Sign Up {hover ? <ArrowForward /> : <ArrowRight />}
             </BtnLink>
           }
         </HaasBtnWrapper>
