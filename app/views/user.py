@@ -87,13 +87,3 @@ def protected():
 #   jti = get_jwt()["jti"]
 #  jwt_redis_blocklist.set(jti, "", ex=ACCESS_EXPIRES)
 #  return jsonify(msg="Access token revoked")
-
-
-@app.route('/hello')
-def hello():
-    return 'Hello, World!'
-
-@app.route('/add', methods=['POST'])
-def add():
-    data = request.get_json()
-    return jsonify({'sum': data['a'] + data['b']})

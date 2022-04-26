@@ -5,27 +5,6 @@ import random
 from app import app
 import json
 
-from werkzeug.test import Client
-c = Client(app)
-
-def test_hello():
-    response = app.test_client().get('/hello')
-
-    assert response.status_code == 200
-    assert response.data == b'Hello, World!'
-
-def test_add():        
-    response = app.test_client().post(
-        '/add',
-        data=json.dumps({'a': 1, 'b': 2}),
-        content_type='application/json',
-    )
-
-    data = json.loads(response.get_data(as_text=True))
-
-    assert response.status_code == 200
-    assert data['sum'] == 3
-
 # import pytest
 # test_signup
 #
@@ -128,13 +107,13 @@ def test_signin ():
     assert data["status"] == 401
     db_users.delete_one({"email": email})
 
-# note:
-# I haven't set up the create the app.test_client() using app.test_client()new_app()
-# Idk if the json={} thing is how you send data to the post functions (could be data={})
 
-# ...idk how to do the jwt_required sections
-# maybe create a token and record it and then us it?
-
+# test_tokencreate
+# 
+# signup and create a new user
+# create a token 
+# assert that the token was created properly
+# 
 def test_tokencreate ():
     random_id = random.randint(0, 255)
     name = "test_user" + str(random_id)
@@ -162,3 +141,41 @@ def test_tokencreate ():
     assert data['status'] == 200
     assert data['name'] == tempname
     assert data["token"] is not None
+
+# test_protected
+# doesn't work: idk what needs to be sent in to protected or if we ever call it
+def test_protected():
+    random_id = random.randint(0, 255)
+    name = "test_user" + str(random_id)
+    email = "test_user" + str(random_id) + "@gmail.com"
+    password = "Test_password" + str(random_id)
+
+    app.test_client().post('/user/signup', data=json.dumps({
+        'name': name,
+        'email': email,
+        'password': password,
+        }),
+    content_type='application/json',
+    )
+
+    email_cursor = db_users.find_one({"email": email})
+    tempname = email_cursor["name"]
+
+    app.test_client().post("/token", data=json.dumps({
+        'email': email,
+        }),
+    content_type='application/json',
+    )
+
+    response = app.test_client().post("/protected",
+        content_type='application/json',
+    )
+
+    data = json.loads(response.get_data(as_text=True))
+    print(data["msg"])
+    # assert data == name
+    
+
+
+
+
