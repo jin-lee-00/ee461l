@@ -45,11 +45,13 @@ const GUIProject = () => {
   const getInitResources = async () => {
     const res = await fetch("/resource/getall")
     const data = await res.json()
-    console.log("init resourrces", data)
-    for (const [value] of Object.entries(data)) {
+    let init_resources = {}
+    for (const [key, value] of Object.entries(data)) {
       console.log(value["name"])
+      init_resources[value["name"]] = 0
     }
-    return data
+    console.log(init_resources)
+    return init_resources
   }
 
   const onClick =() => {
