@@ -40,7 +40,7 @@ const Home = () => {
     setIsLoggedIn(false);
   }
 
-  if (!isLoggedIn) {
+  if (sessionStorage.getItem("token") === null) {
     return <Navigate replace to={'/signin'} />
   }
   return (
