@@ -37,12 +37,12 @@ const SectionHaaS = (isLoggedIn, currentUser) => {
         </HaasP>
         <HaasBtnWrapper>
           {isLoggedIn ?
-            <HaasP>Welcome Back {sessionStorage.getItem('name')}</HaasP> 
+            <HaasP>Welcome Back {""+currentUser}</HaasP> 
           :
             <BtnLink 
-            to='signup' 
-            onMouseEnter={onHover} 
-            onMouseLeave={onHover}
+              to='signup' 
+              onMouseEnter={onHover} 
+              onMouseLeave={onHover}
             >
             Sign Up {hover ? <ArrowForward /> : <ArrowRight />}
             </BtnLink>
