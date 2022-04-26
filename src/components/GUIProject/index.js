@@ -42,6 +42,13 @@ const GUIProject = () => {
     return data
   }
 
+  const getInitResources = async () => {
+    const res = await fetch("/resource/getall")
+    const data = await res.json()
+    console.log("init resourrces", data)
+    return data
+  }
+
   const onClick =() => {
     setShowAddProject(!showAddProject)
   }
@@ -79,6 +86,7 @@ const GUIProject = () => {
 
   const addProject = (project) => {
     const _id = Math.floor(Math.random() * 1000000) + 1
+    getInitResources()
     const resources = {
       "HWSet1": 0,
       "HWSet2": 0
