@@ -91,11 +91,7 @@ const GUIProject = () => {
 
   const addProject = (project) => {
     const _id = Math.floor(Math.random() * 1000000) + 1
-    getInitResources()
-    const resources = {
-      "HWSet1": 0,
-      "HWSet2": 0
-    }
+    const resources = getInitResources()
     const newProject = { _id, ...project, resources}
     fetch("/project/add", {
       method: "POST",
