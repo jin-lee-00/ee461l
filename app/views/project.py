@@ -74,6 +74,9 @@ def checkOut(_id, resource_name, qty):
   resource_query = {"name":resource_name}
   project_cursor = db_projects.find_one({"_id":int(_id)})
   current_checkedOutQty = project_cursor["resources"][resource_name]
+  if(current_checkedOutQty == None):
+    db_projects.update_one({"_id":int(_id)}, [{"$set": {"resources": {resource_name: 0}}}])
+    current_checkedOutQty = 0
   project_query = {"_id":int(_id)}
   
   if(resource_cursor["availability"] >= int(qty)):
