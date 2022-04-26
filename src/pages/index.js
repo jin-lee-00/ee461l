@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import SectionHaaS from '../components/SectionHaaS'
 import SectionContent from '../components/SectionContent'
 import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from '../components/SectionContent/Content'
+import { Navigate } from 'react-router-dom'
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,6 +40,9 @@ const Home = () => {
     setIsLoggedIn(false);
   }
 
+  if (!isLoggedIn) {
+    return <Navigate replace to={'/signin'} />
+  }
   return (
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
