@@ -46,6 +46,9 @@ const GUIProject = () => {
     const res = await fetch("/resource/getall")
     const data = await res.json()
     console.log("init resourrces", data)
+    for (const [key, value] of Object.entries(data)) {
+      console.log(key, value["name"])
+    }
     return data
   }
 
