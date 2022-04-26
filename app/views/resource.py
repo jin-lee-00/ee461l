@@ -1,4 +1,4 @@
-from app import db_resources, app
+from app import db_resources, db_projects, app
 from flask import request, json
 from bson.json_util import dumps
 
@@ -12,7 +12,7 @@ def addresource():
   capacity = int(request_data["capacity"])
   availability = capacity
   checkout = {} # store checkout as [user:qty] key:value pair
-  name_cursor = db_resources.find_one({"name": name}) # projects must have unique names
+  name_cursor = db_resources.find_one({"name": name}) # resource must have unique names
   if name_cursor == None:
     db_resources.insert_one({
       "_id": _id,
@@ -21,6 +21,8 @@ def addresource():
       "availability": availability,
       "checkout": checkout
     }) 
+
+    db_projects.update_many({}, [{"$set": {"resources": {name: 0}}}])
     # append the status to
     response["status"] = 200
     return response
