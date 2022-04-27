@@ -1,5 +1,4 @@
 import React from 'react';
-import { BtnLink } from '../Button.style';
 import { 
   ContentContainer, 
   ContentWrapper, 
@@ -10,7 +9,6 @@ import {
   TopLine, 
   Heading, 
   Subtitle, 
-  BtnWrap, 
   ImgWrap
 } from './SectionContent.style'
 import GUIProject from '../GUIProject';
@@ -55,17 +53,6 @@ const SectionContent = ({
                 <TopLine>{topLine}</TopLine>
                 <Heading lightText={lightText}>{headline}</Heading>
                 <Subtitle darkText={darkText}>{description}</Subtitle>
-                
-{/*                
-                <BtnWrap>
-                  <BtnLink to={route}
-                    $primary={primary}
-                    $lightBg={lightBg}
-                  >
-                    {buttonLabel}
-                  </BtnLink>
-                </BtnWrap>
-*/}
               </TextWrapper>
 
             </Column1>

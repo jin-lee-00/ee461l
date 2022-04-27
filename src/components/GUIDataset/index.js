@@ -7,12 +7,10 @@ import {
   GUIButton
 } from './GUI.style';
 import AddDataset from "./AddDataset";
-import { useNavigate } from "react-router-dom";
 
 const GUIDataset = () => {
   const [showAddDataset, setShowAddDataset] = useState(false)
   const [datasets, setDatasets] = useState([])
-  const navigate = useNavigate();
 
   useEffect(() => {
     const getDatasets = async () => {

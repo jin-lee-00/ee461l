@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Dataset from './Dataset'
 
 const Datasets = ({ datasets, onDownload, onDelete }) => {
