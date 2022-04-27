@@ -36,7 +36,7 @@ const AddDataset = ({ onAdd }) => {
         <FormLabel>Page URL</FormLabel>
         <FormInput 
           type='text' 
-          placeholder='Page URL' 
+          placeholder='Page URL (https://)' 
           value={page_url}
           onChange={(e) => setPage_url(e.target.value)}
         />
@@ -45,7 +45,7 @@ const AddDataset = ({ onAdd }) => {
         <FormLabel>Zip URL</FormLabel>
         <FormInput 
           type='text' 
-          placeholder='ZIP URL' 
+          placeholder='ZIP URL (https://)' 
           value={zip_url}
           onChange={(e) => setZip_url(e.target.value)}
         />

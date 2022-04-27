@@ -14,7 +14,7 @@ const Dataset = ({ dataset, onDownload, onDelete }) => {
     <EntryWrapper>
       <EntryHeader>
         <EntryH3>
-          <EntryHref href={dataset.url} target="_blank">
+          <EntryHref href={dataset.page_url} target="_blank">
             {dataset.name}
           </EntryHref>
         </EntryH3>
