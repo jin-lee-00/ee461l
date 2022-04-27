@@ -1,4 +1,5 @@
-from app import db_resources
+from urllib import response
+from app import db_resources, data
 from app import app
 import json
 
@@ -30,7 +31,40 @@ def test_addresource():
     content_type='application/json',
     )
 
-    data = json.loads(response.get_data(as_text=True))
-    assert data["status"] == 400
+    d = json.loads(response.get_data(as_text=True))
+    assert d["status"] == 400
 
     db_resources.delete_one({"name": "test_resource"})
+
+
+def test_deleteresource():
+    app.test_client().post('/resource/add', data=json.dumps({
+        '_id': 10000,
+        'name': "test_resource",
+        'capacity': 1000
+        }),
+    content_type='application/json',
+    )
+
+    response = app.test_client().post('/resource/delete', data=json.dumps({
+        '_id': 10000,
+        }),
+    content_type='application/json',
+    )
+
+    assert response.status_code == 200
+
+    d = json.loads(response.get_data(as_text=True))
+    assert d["_id"] ==  10000
+
+    resource_exists = db_resources.find_one({"_id": 10000})
+    assert resource_exists is None
+
+
+def test_getresources():
+    response = app.test_client().get('/resource/getall')
+
+    assert response.status_code == 200
+
+    d = json.loads(response.get_data(as_text=True))
+    assert len(d) == len(list(db_resources.find()))

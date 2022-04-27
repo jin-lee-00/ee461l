@@ -38,7 +38,7 @@ def deleteresource():
   db_resources.delete_one({"_id": _id})
   return request_data
 
-@app.route('/resource/getall')
+@app.route('/resource/getall', methods=['GET'])
 def getresources():
   resources_cursor = db_resources.find()
   resources_list = list(resources_cursor)
