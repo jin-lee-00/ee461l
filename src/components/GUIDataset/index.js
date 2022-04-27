@@ -61,7 +61,7 @@ const GUIDataset = () => {
   const addDataset = (dataset) => {
     const _id = Math.floor(Math.random() * 10000) + 1
     const newDataset = { _id, ...dataset}
-    fetch("http://localhost:5000/dataset/add", {
+    fetch("/dataset/add", {
       method: "POST",
       body: JSON.stringify({
         _id: newDataset._id,
