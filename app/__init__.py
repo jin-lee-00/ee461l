@@ -92,6 +92,11 @@ db_resources = data.resources
 db_projects = data.projects
 db_datasets = data.datasets
 
+if(db_users.count_documents({}) == 0): db_users.insert_one(_user)
+if(db_projects.count_documents({}) == 0): db_projects.insert_one(_project)
+if(db_resources.count_documents({}) == 0): db_resources.insert_many(_resources)
+if(db_datasets.count_documents({}) == 0): db_datasets.insert_many(_datasets)
+
 from app.views import dataset
 from app.views import project
 from app.views import resource
