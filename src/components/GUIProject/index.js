@@ -92,6 +92,7 @@ const GUIProject = () => {
   const addProject = async (project) => {
     const _id = Math.floor(Math.random() * 1000000) + 1
     const resources = await getInitResources()
+    console.log(resources)
     const newProject = { _id, ...project, resources}
     fetch("/project/add", {
       method: "POST",

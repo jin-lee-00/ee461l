@@ -3,7 +3,8 @@ import { EntryForm, FormBtn, FormContainer, FormInput, FormLabel, GUIButton } fr
 
 const AddDataset = ({ onAdd }) => {
   const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
+  const [page_url, setPage_url] = useState('')
+  const [zip_url, setZip_url] = useState('')
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -13,30 +14,40 @@ const AddDataset = ({ onAdd }) => {
       return
     }
 
-    onAdd({name, description})
+    onAdd({name, page_url, zip_url})
     
     setName('')
-    setDescription('')
+    setPage_url('')
+    setZip_url('')
   }
 
   return (
     <EntryForm onSubmit={onSubmit}>
       <FormContainer>
-        <FormLabel>Dataset</FormLabel>
+        <FormLabel>Name</FormLabel>
         <FormInput 
           type='text' 
-          placeholder='Add Entry'
+          placeholder='Name'
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
       </FormContainer>
       <FormContainer>
-        <FormLabel>Description</FormLabel>
+        <FormLabel>Page URL</FormLabel>
         <FormInput 
           type='text' 
-          placeholder='Add Description' 
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          placeholder='Page URL' 
+          value={page_url}
+          onChange={(e) => setPage_url(e.target.value)}
+        />
+      </FormContainer>
+      <FormContainer>
+        <FormLabel>Zip URL</FormLabel>
+        <FormInput 
+          type='text' 
+          placeholder='ZIP URL' 
+          value={zip_url}
+          onChange={(e) => setZip_url(e.target.value)}
         />
       </FormContainer>
 

@@ -10,7 +10,7 @@ import AddDataset from "./AddDataset";
 import { useNavigate } from "react-router-dom";
 
 const GUIDataset = () => {
-  //const [showAddDataset, setShowAddDataset] = useState(false)
+  const [showAddDataset, setShowAddDataset] = useState(false)
   const [datasets, setDatasets] = useState([])
   const navigate = useNavigate();
 
@@ -31,11 +31,9 @@ const GUIDataset = () => {
     return data
   }
 
-{/*
   const onClick =() => {
     setShowAddDataset(!showAddDataset)
   }
-*/}
 
   const downloadDataset = (zip_url) => {
     window.open(zip_url, "_blank")
@@ -59,16 +57,17 @@ const GUIDataset = () => {
     })
   }
 
-{/*
+
   const addDataset = (dataset) => {
     const _id = Math.floor(Math.random() * 10000) + 1
     const newDataset = { _id, ...dataset}
-    fetch("http://localhost:5000/project/add", {
+    fetch("http://localhost:5000/dataset/add", {
       method: "POST",
       body: JSON.stringify({
         _id: newDataset._id,
         name: newDataset.name,
-        desc: newDataset.description
+        page_url: newDataset.page_url,
+        zip_url: newDataset.zip_url
       }),
       headers: {
         "Content-type": "application/json"
@@ -80,23 +79,20 @@ const GUIDataset = () => {
     })
     setDatasets([...datasets, newDataset])
   }
-*/}
 
   return (
     <GUIContainer primary='true'>
       <Header>
         
         <TopLine>Datasets</TopLine>
-{/*
         <GUIButton 
           onClick={onClick}
           primary={showAddDataset}
         >
           {showAddDataset ? '-' : '+'}
-        </GUIButton>
-*/}      
+        </GUIButton>     
       </Header>
-      {/*showAddDataset && <AddDataset onAdd={addDataset}/>*/}
+      {showAddDataset && <AddDataset onAdd={addDataset}/>}
       {datasets.length > 0 ? <Datasets datasets={datasets} 
         onDownload={downloadDataset}
         onDelete={deleteDataset}
