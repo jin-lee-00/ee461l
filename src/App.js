@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages'
@@ -12,10 +12,16 @@ import NotFoundPage from './pages/notfound';
 import ProjectPage from './pages/project';
 
 const App = () => {
+  const [dark, setDark] = useState(false);
+
+  const toggle_dark = () => {
+    setDark(!dark)
+  }
+
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Home/>} />
+        <Route path='/' element={<Home dark={dark} toggle_dark={toggle_dark} />} />
         <Route path='signin' element={<SigninPage/>} />
         <Route path='signup' element={<SignUpPage/>} />
         <Route path='projects' element={<ProjectsPage/>} />

@@ -10,6 +10,7 @@ import {
   ArrowRight 
 } from './SectionHaaS.style'
 import { BtnLink } from '../Button.style'
+import { FaRegMoon } from 'react-icons/fa'
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
 const SectionHaaS = (props) => {
@@ -28,14 +29,18 @@ const SectionHaaS = (props) => {
     <HaasContainer id='home'>
       {/* <HaasBg></HaasBg> */}
       <HaasContent>
-      <Player
-        autoplay
-        loop
-        src="https://assets5.lottiefiles.com/packages/lf20_wepuwkno.json"
-        className='lottie-hero'
-      >
-        {/* <Controls visible={true} buttons={['play', 'repeat', 'frame', 'debug']} /> */}
-      </Player>
+        <FaRegMoon 
+          onClick={() => {console.log(props.dark)}}        
+        />
+
+        <Player autoplay loop
+          src="https://assets5.lottiefiles.com/packages/lf20_wepuwkno.json"
+          className='lottie-hero'
+          style={{ width: 150, height: 150 }}
+        >
+          {/* <Controls visible={true} buttons={['play', 'repeat', 'frame', 'debug']} /> */}
+        </Player>
+
         <HaasH1>EE 461L Group 2</HaasH1>
         <HaasP>
         Jin Lee, Brandi Nguyen, Allen Zhou, Carson Bone, Noah Zamarripa  

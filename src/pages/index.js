@@ -6,7 +6,7 @@ import SectionContent from '../components/SectionContent'
 import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from '../components/SectionContent/Content'
 import { Navigate } from 'react-router-dom'
 
-const Home = () => {
+const Home = ( dark, toggle_dark ) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -50,6 +50,8 @@ const Home = () => {
       <SectionHaaS
         isLoggedIn={isLoggedIn}
         currentUser={currentUser}
+        dark={dark}
+        toggle_dark={toggle_dark}
       />
       <SectionContent {...homeObjOne} />
       <SectionContent {...homeObjTwo} />
