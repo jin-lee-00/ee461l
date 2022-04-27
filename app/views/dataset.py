@@ -16,7 +16,7 @@ def adddataset():
     db_datasets.insert_one({
       "_id": _id,
       "name": name,
-      "url": page_url,
+      "page_url": page_url,
       "zip_url": zip_url,
     }) 
 
