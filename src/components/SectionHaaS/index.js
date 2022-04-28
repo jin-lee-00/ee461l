@@ -27,12 +27,10 @@ const SectionHaaS = (props) => {
 
   return (
     <HaasContainer id='home'>
-      {/* <HaasBg></HaasBg> */}
+      <FaRegMoon 
+        onClick={() => {console.log(props.dark)}}        
+      />
       <HaasContent>
-        <FaRegMoon 
-          onClick={() => {console.log(props.dark)}}        
-        />
-
         <Player autoplay loop
           src="https://assets5.lottiefiles.com/packages/lf20_wepuwkno.json"
           className='lottie-hero'
