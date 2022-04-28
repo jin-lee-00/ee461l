@@ -21,6 +21,11 @@ export const Header = styled.header`
   margin-bottom: 20px;
 `
 
+export const ScrollBody = styled.div`
+  height: 200px;
+  overflow-y: scroll;
+`
+
 export const ContentRow = styled.div`
   display: grid;
   grid-auto-columns: minmax(auto, 1fr);
