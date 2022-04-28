@@ -27,10 +27,10 @@ const SectionHaaS = (props) => {
 
   return (
     <HaasContainer id='home'>
-      <FaRegMoon 
-        onClick={() => {console.log(props.dark)}}        
-      />
       <HaasContent>
+        <FaRegMoon 
+          onClick={() => props.toggle_dark()}        
+        />
         <Player autoplay loop
           src="https://assets5.lottiefiles.com/packages/lf20_wepuwkno.json"
           className='lottie-hero'
@@ -38,7 +38,7 @@ const SectionHaaS = (props) => {
         >
           {/* <Controls visible={true} buttons={['play', 'repeat', 'frame', 'debug']} /> */}
         </Player>
-
+        <HaasP>{props.dark}</HaasP>
         <HaasH1>EE 461L Group 2</HaasH1>
         <HaasP>
         Jin Lee, Brandi Nguyen, Allen Zhou, Carson Bone, Noah Zamarripa  
