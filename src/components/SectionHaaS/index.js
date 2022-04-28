@@ -34,10 +34,7 @@ const SectionHaaS = (props) => {
         >
           {/* <Controls visible={true} buttons={['play', 'repeat', 'frame', 'debug']} /> */}
         </Player>
-        <HaasH1>EE 461L Group 2</HaasH1>
-        <HaasP>
-        Jin Lee, Brandi Nguyen, Allen Zhou, Carson Bone, Noah Zamarripa  
-        </HaasP>
+        <HaasH1>Hardware-as-a-Service</HaasH1>
         <HaasBtnWrapper>
           {props.isLoggedIn ?
             <HaasP>Welcome Back {String(currentUser)}</HaasP> 

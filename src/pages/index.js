@@ -6,7 +6,7 @@ import SectionContent from '../components/SectionContent'
 import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from '../components/SectionContent/Content'
 import { Navigate } from 'react-router-dom'
 
-const Home = ( dark, toggle_dark ) => {
+const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,7 +28,7 @@ const Home = ( dark, toggle_dark ) => {
   }
 
   const logOut = () => {
-    // fetch("http://localhost:5000/logout", {
+    // fetch("/logout", {
     //   headers: {
     //     "Content-type": "application/json"
     //   }
@@ -47,12 +47,7 @@ const Home = ( dark, toggle_dark ) => {
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} isLoggedIn={isLoggedIn} logOut={logOut}/>
-      <SectionHaaS
-        isLoggedIn={isLoggedIn}
-        currentUser={currentUser}
-        dark={dark}
-        toggle_dark={toggle_dark}
-      />
+      <SectionHaaS isLoggedIn={isLoggedIn} />
       <SectionContent {...homeObjOne} />
       <SectionContent {...homeObjTwo} />
       <SectionContent {...homeObjThree} />
