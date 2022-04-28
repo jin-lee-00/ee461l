@@ -38,7 +38,7 @@ const SectionHaaS = (props) => {
         >
           {/* <Controls visible={true} buttons={['play', 'repeat', 'frame', 'debug']} /> */}
         </Player>
-        <HaasP>{props.dark}</HaasP>
+        <HaasP>String({props.dark})</HaasP>
         <HaasH1>EE 461L Group 2</HaasH1>
         <HaasP>
         Jin Lee, Brandi Nguyen, Allen Zhou, Carson Bone, Noah Zamarripa  
