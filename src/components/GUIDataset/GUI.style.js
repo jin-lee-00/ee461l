@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const GUIContainer = styled.div`
   width: 500px;
-  //height: 275px; 
+  height: 300px; 
   background-color: ${({primary}) => (primary ? '#9cadb7' : '#333f48')};
   margin: 10px;
   padding: 10px;
@@ -19,6 +19,10 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+`
+
+export const ScrollBody = styled.div`
+  overflow-y: scroll;
 `
 
 export const ContentRow = styled.div`
