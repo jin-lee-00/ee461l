@@ -46,6 +46,8 @@ def test_signup():
     data = json.loads(response.get_data(as_text=True))
     assert data["status"] == 400
     db_users.delete_one({"email": email})
+    user_exists = db_users.find_one({"email": email})
+    assert user_exists is None
 
 
 # test_signin
@@ -106,6 +108,8 @@ def test_signin ():
     data = json.loads(response.get_data(as_text=True))
     assert data["status"] == 401
     db_users.delete_one({"email": email})
+    user_exists = db_users.find_one({"email": email})
+    assert user_exists is None
 
 
 # test_tokencreate
@@ -142,6 +146,10 @@ def test_tokencreate ():
     assert data['name'] == tempname
     assert data["token"] is not None
 
+    db_users.delete_one({"email": email})
+    user_exists = db_users.find_one({"email": email})
+    assert user_exists is None
+
 # test_protected
 # doesn't work: idk what needs to be sent in to protected or if we ever call it
 def test_protected():
@@ -173,7 +181,11 @@ def test_protected():
 
     data = json.loads(response.get_data(as_text=True))
     print(data["msg"])
-    # assert data == name
+
+    db_users.delete_one({"email": email})
+    user_exists = db_users.find_one({"email": email})
+    assert user_exists is None
+    
     
 
 
