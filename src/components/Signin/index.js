@@ -12,6 +12,7 @@ import {
   Text 
 } from './Signin.style'
 import { useNavigate } from "react-router-dom";
+import Link from './link/link';
 
 
 const SignIn = () => {
@@ -96,8 +97,12 @@ const SignIn = () => {
               <FormInput type="password" required 
                 onChange={handlePasswordChange}
               />
-              <FormButton type="submit">Sign In</FormButton>
-              <Text>Don't have an account? <a href ="/signup">Sign up</a> </Text>
+              <FormButton 
+              type="submit">Sign In</FormButton>
+              <Text>Don't have an account? <Link
+              page="signup"
+              children="Sign up"
+              ></Link> </Text>
             </Form>
           </FormContent>
         </FormWrap>
