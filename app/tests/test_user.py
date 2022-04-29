@@ -4,6 +4,7 @@ from app import db_users
 import random
 from app import app
 import json
+from flask_jwt_extended import create_access_token
 
 # import pytest
 # test_signup
@@ -169,18 +170,29 @@ def test_protected():
     email_cursor = db_users.find_one({"email": email})
     tempname = email_cursor["name"]
 
-    app.test_client().post("/token", data=json.dumps({
+    response = app.test_client().post("/token", data=json.dumps({
         'email': email,
         }),
     content_type='application/json',
     )
 
+    data = json.loads(response.get_data(as_text=True))
+    token = data["token"]
+
+    headers = {
+        'Authorization': 'Bearer {}'.format(token)
+    }
+
     response = app.test_client().post("/protected",
+        headers = headers,
         content_type='application/json',
     )
 
     data = json.loads(response.get_data(as_text=True))
-    print(data["msg"])
+    # print(data)
+    assert response.status_code == 200
+    assert data['logged_in_as'] == name
+    
 
     db_users.delete_one({"email": email})
     user_exists = db_users.find_one({"email": email})
