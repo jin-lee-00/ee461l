@@ -5,33 +5,39 @@ Jin Lee, Brandi Nguyen, Allen Zhou, Carson Bone, Noah Zamarripa
 [Phase 2 (Deployed App)](https://ee461l-2.herokuapp.com/)  
 
 ## Introduction 
-This project is a proof of concept for a HaaS system with user, project, and resource management, as well as file sharing/downloading functionality.  
-The React frontend was designed with usability and simplicity in mind, with the goal of creating an intuitive user interface.  
-The Flask backend is small, simple, yet modular, allowing for easy maintenance/modifications. 
+This project is a proof of concept for a HaaS system with user, project, and resource management, as well as file sharing/downloading functionality.<br />
+The React frontend was designed with usability and simplicity in mind, with the goal of creating an intuitive user interface.<br />
+The Flask backend is small, simple, yet modular, allowing for easy maintenance/modifications.<br /> 
 
 ## User Guide  
 ### Sign-in/Sign-up  
 <p align="center">
   <img width="500" src="https://user-images.githubusercontent.com/98115244/166090984-54bbaf49-b632-4ce3-b4ca-cf7d83c0d7c6.png">  
 </p>  
-TEXT
+Sign in to the dashboard via email and password. To create a new user account, click the link below the form to sign up.<br /> 
 
 ### Navigation  
 <p align="center">
   <img width="500" src="https://user-images.githubusercontent.com/98115244/166090685-c8f612d9-66cd-4fbd-bffc-b1af9387a20f.png">
 </p>  
-TEXT
+The dashboard consists of a single page with a navigation bar that scrolls to each section.<br />    
+To return to the top of page, click the 'HaaS' logo on the top left of the screen.<br />    
+To log out, click the 'Log out' button.<br />  
 
 ### Project Management  
 <p align="center">
   <img width="500" src="https://user-images.githubusercontent.com/98115244/166090712-2c77901a-fc62-4d3e-ab7d-ec904804a2bf.png">  
 </p>  
-TEXT
-  
+In the projects section, users can create, find, and manage their projects.<br />  
+To create a new project, click the '+' button on the top right of the interface to expand the project creation tab.<br />  
+When a project is created, it will be displayed below.<br /> 
+<br />  
+
 <p align="center">
   <img width="500" src="https://user-images.githubusercontent.com/98115244/166090725-faf8d4e8-b0e0-477e-ba1f-c8692c0a2e5c.png">
 </p>  
-TEXT
+To find an existing project, enter the project ID (shown in parenthesis) and click the 'Search Project' button.<br />
+To delete an existing project, click the 'x' icon on the right side of the project tab. This will delete the project from the database and return all checked out resources.<br />
 
 <p align="center">
   <img width="500" src="https://user-images.githubusercontent.com/98115244/166090954-20867aef-1b37-45a1-a02c-cad2fe998704.png">
