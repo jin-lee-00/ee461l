@@ -42,19 +42,27 @@ To delete an existing project, click the 'x' icon on the right side of the proje
 <p align="center">
   <img width="500" src="https://user-images.githubusercontent.com/98115244/166090954-20867aef-1b37-45a1-a02c-cad2fe998704.png">
 </p>  
-TEXT
+To manage a project, click the 'Manage' button to go to its individual page.<br />
+At the top, fixed information about the project is displayed, followed by resources checked out to the project.<br />
+To check out or check in resources, enter the quantity and click '+' or '-', respectively. Input quantities exceeding limits will be capped at the quantity available for check in/checkout.<br />
 
 ## Resource Management  
 <p align="center">
   <img width="500" src="https://user-images.githubusercontent.com/98115244/166090999-ec4615f6-9ecb-48bf-b8a1-cd028502af83.png">
 </p>  
-TEXT
+In the resources section, users can create new resources.<br />
+To create a new resource, click the '+' button on the top right of the interface to expand the resource creation tab.<br />  
+When a resource is created, its availability will be initialized to its capacity, and displayed below.<br /> 
 
 ## Dataset Access  
 <p align="center">
   <img width="500" src="https://user-images.githubusercontent.com/98115244/166091054-e1bff947-dbce-4c3d-a40a-ebc596f1453c.png">
 </p>  
-TEXT
+In the datasets section, users can download datasets from PhysioNet, as well as add new files to be shared with other users.<br />
+Clicking the link in a dataset tab will redirect to the dataset page, while the 'Download' button will download the zip file. <br />
+To create a new dataset download, click the '+' button on the top right of the interface to expand the dataset creation tab.<br />  
+When a dataset is created, its page will be initialized to the page URL, and its download will be initialized to the zip URL.<br /> 
+
 
 
 
